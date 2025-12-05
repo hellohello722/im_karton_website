@@ -5,6 +5,7 @@ import {
 } from "@/lib/constants";
 import { isShopifyError } from "@/lib/typeGuards";
 import { ensureStartsWith } from "@/lib/utils";
+import * as mock from "./mock";
 import {
   addToCartMutation,
   createCartMutation,
@@ -63,11 +64,17 @@ import type {
   userOperation,
 } from "./types";
 
-const domain = import.meta.env.PUBLIC_SHOPIFY_STORE_DOMAIN
-  ? ensureStartsWith(import.meta.env.PUBLIC_SHOPIFY_STORE_DOMAIN, "https://")
+const storeDomain = import.meta.env.PUBLIC_SHOPIFY_STORE_DOMAIN;
+const storefrontToken = import.meta.env.PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN;
+export const isShopifyConfigured = Boolean(storeDomain && storefrontToken);
+
+const domain = storeDomain
+  ? ensureStartsWith(storeDomain, "https://")
   : "";
-const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;
-const key = import.meta.env.PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!;
+const endpoint = isShopifyConfigured
+  ? `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`
+  : "";
+const key = storefrontToken || "";
 
 type ExtractVariables<T> = T extends { variables: object }
   ? T["variables"]
@@ -85,6 +92,11 @@ export async function shopifyFetch<T>({
   variables?: ExtractVariables<T>;
 }): Promise<{ status: number; body: T } | never> {
   try {
+    if (!isShopifyConfigured) {
+      throw new Error(
+        "Shopify credentials are not configured. Mock data should handle this request.",
+      );
+    }
     // console.log("Headers being sent:", {
     //   "Content-Type": "application/json",
     //   "X-Shopify-Storefront-Access-Token": key,
@@ -231,6 +243,9 @@ const reshapeProducts = (products: ShopifyProduct[]) => {
 };
 
 export async function createCart(): Promise<Cart> {
+  if (!isShopifyConfigured) {
+    return mock.createCart();
+  }
   const res = await shopifyFetch<ShopifyCreateCartOperation>({
     query: createCartMutation,
   });
@@ -242,6 +257,9 @@ export async function addToCart(
   cartId: string,
   lines: { merchandiseId: string; quantity: number }[],
 ): Promise<Cart> {
+  if (!isShopifyConfigured) {
+    return mock.addToCart(cartId, lines);
+  }
   const res = await shopifyFetch<ShopifyAddToCartOperation>({
     query: addToCartMutation,
     variables: {
@@ -257,6 +275,9 @@ export async function removeFromCart(
   cartId: string,
   lineIds: string[],
 ): Promise<Cart> {
+  if (!isShopifyConfigured) {
+    return mock.removeFromCart(cartId, lineIds);
+  }
   const res = await shopifyFetch<ShopifyRemoveFromCartOperation>({
     query: removeFromCartMutation,
     variables: {
@@ -273,6 +294,9 @@ export async function updateCart(
   cartId: string,
   lines: { id: string; merchandiseId: string; quantity: number }[],
 ): Promise<Cart> {
+  if (!isShopifyConfigured) {
+    return mock.updateCart(cartId, lines);
+  }
   const res = await shopifyFetch<ShopifyUpdateCartOperation>({
     query: editCartItemsMutation,
     variables: {
@@ -286,6 +310,9 @@ export async function updateCart(
 }
 
 export async function getCart(cartId: string): Promise<Cart | undefined> {
+  if (!isShopifyConfigured) {
+    return mock.getCart(cartId);
+  }
   const res = await shopifyFetch<ShopifyCartOperation>({
     query: getCartQuery,
     variables: { cartId },
@@ -304,6 +331,9 @@ export async function getCart(cartId: string): Promise<Cart | undefined> {
 export async function getCollection(
   handle: string,
 ): Promise<Collection | undefined> {
+  if (!isShopifyConfigured) {
+    return mock.getCollection(handle);
+  }
   const res = await shopifyFetch<ShopifyCollectionOperation>({
     query: getCollectionQuery,
     tags: [TAGS.collections],
@@ -326,6 +356,14 @@ export async function getCollectionProducts({
   sortKey?: string;
   filterCategoryProduct?: any[]; // Update the type based on your GraphQL schema
 }): Promise<{ pageInfo: PageInfo | null; products: Product[] }> {
+  if (!isShopifyConfigured) {
+    return mock.getCollectionProducts({
+      collection,
+      reverse,
+      sortKey,
+      filterCategoryProduct,
+    });
+  }
   const res = await shopifyFetch<ShopifyCollectionProductsOperation>({
     query: getCollectionProductsQuery,
     tags: [TAGS.collections, TAGS.products],
@@ -358,6 +396,9 @@ export async function getCollectionProducts({
 }
 
 export async function createCustomer(input: CustomerInput): Promise<any> {
+  if (!isShopifyConfigured) {
+    return mock.createCustomer(input);
+  }
   const res = await shopifyFetch<registerOperation>({
     query: createCustomerMutation,
     variables: {
@@ -378,6 +419,9 @@ export async function getCustomerAccessToken({
   email,
   password,
 }: Partial<CustomerInput>): Promise<any> {
+  if (!isShopifyConfigured) {
+    return mock.getCustomerAccessToken();
+  }
   const res = await shopifyFetch<any>({
     query: getCustomerAccessTokenMutation,
     variables: { input: { email, password } },
@@ -392,6 +436,9 @@ export async function getCustomerAccessToken({
 }
 
 export async function getUserDetails(accessToken: string): Promise<user> {
+  if (!isShopifyConfigured) {
+    return mock.getUserDetails();
+  }
   const response = await shopifyFetch<userOperation>({
     query: getUserDetailsQuery,
     variables: {
@@ -404,6 +451,9 @@ export async function getUserDetails(accessToken: string): Promise<user> {
 }
 
 export async function getCollections(): Promise<Collection[]> {
+  if (!isShopifyConfigured) {
+    return mock.getCollections();
+  }
   const res = await shopifyFetch<ShopifyCollectionsOperation>({
     query: getCollectionsQuery,
     tags: [TAGS.collections],
@@ -419,6 +469,9 @@ export async function getCollections(): Promise<Collection[]> {
 }
 
 export async function getMenu(handle: string): Promise<Menu[]> {
+  if (!isShopifyConfigured) {
+    return mock.getMenu();
+  }
   const res = await shopifyFetch<ShopifyMenuOperation>({
     query: getMenuQuery,
     tags: [TAGS.collections],
@@ -439,6 +492,9 @@ export async function getMenu(handle: string): Promise<Menu[]> {
 }
 
 export async function getPage(handle: string): Promise<Page> {
+  if (!isShopifyConfigured) {
+    return mock.getPage(handle);
+  }
   const res = await shopifyFetch<ShopifyPageOperation>({
     query: getPageQuery,
     variables: { handle },
@@ -448,6 +504,9 @@ export async function getPage(handle: string): Promise<Page> {
 }
 
 export async function getPages(): Promise<Page[]> {
+  if (!isShopifyConfigured) {
+    return mock.getPages();
+  }
   const res = await shopifyFetch<ShopifyPagesOperation>({
     query: getPagesQuery,
   });
@@ -456,6 +515,9 @@ export async function getPages(): Promise<Page[]> {
 }
 
 export async function getProduct(handle: string): Promise<Product | undefined> {
+  if (!isShopifyConfigured) {
+    return mock.getProduct(handle);
+  }
   const res = await shopifyFetch<ShopifyProductOperation>({
     query: getProductQuery,
     tags: [TAGS.products],
@@ -470,6 +532,9 @@ export async function getProduct(handle: string): Promise<Product | undefined> {
 export async function getProductRecommendations(
   productId: string,
 ): Promise<Product[]> {
+  if (!isShopifyConfigured) {
+    return mock.getProductRecommendations(productId);
+  }
   const res = await shopifyFetch<ShopifyProductRecommendationsOperation>({
     query: getProductRecommendationsQuery,
     tags: [TAGS.products],
@@ -490,6 +555,9 @@ export async function getVendors({
   reverse?: boolean;
   sortKey?: string;
 }): Promise<{ vendor: string; productCount: number }[]> {
+  if (!isShopifyConfigured) {
+    return mock.getVendors({ query, reverse, sortKey });
+  }
   const res = await shopifyFetch<ShopifyProductsOperation>({
     query: getVendorsQuery,
     tags: [TAGS.products],
@@ -536,6 +604,9 @@ export async function getTags({
   reverse?: boolean;
   sortKey?: string;
 }): Promise<Product[]> {
+  if (!isShopifyConfigured) {
+    return mock.getTags({ query, reverse, sortKey });
+  }
   const res = await shopifyFetch<ShopifyProductsOperation>({
     query: getProductsQuery,
     tags: [TAGS.products],
@@ -560,6 +631,9 @@ export async function getProducts({
   sortKey?: string;
   cursor?: string;
 }): Promise<{ pageInfo: PageInfo; products: Product[] }> {
+  if (!isShopifyConfigured) {
+    return mock.getProducts({ query, reverse, sortKey, cursor });
+  }
   const res = await shopifyFetch<ShopifyProductsOperation>({
     query: getProductsQuery,
     tags: [TAGS.products],
@@ -584,6 +658,9 @@ export async function getHighestProductPrice(): Promise<{
   currencyCode: string;
 } | null> {
   try {
+    if (!isShopifyConfigured) {
+      return mock.getHighestProductPrice();
+    }
     const res = await shopifyFetch<any>({
       query: getHighestProductPriceQuery,
     });

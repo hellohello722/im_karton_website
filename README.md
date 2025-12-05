@@ -42,6 +42,7 @@
 - 🔄 Dynamic Home Banner Slider
 - 📝 Write and Update Content in Markdown / MDX
 - ⌛ Infinite Product Load on Scrolling
+ - 🧪 Built-in mock Shopify data for local development
 
 ### 📄 10+ Pre-designed Pages
 
@@ -145,6 +146,8 @@ npm install
 ```bash
 npm run dev
 ```
+
+With no Shopify environment variables configured, the command boots the storefront using the local mock data service in `src/lib/shopify/mock.ts`. Populate `.env` once you are ready to connect to a real Shopify store.
 
 ### 👉 Build Command
 
