@@ -17,6 +17,52 @@ const pagesCollection = defineCollection({
   }),
 });
 
+const caseStudyCollection = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "src/content/case-studies" }),
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    industry: z.string().optional(),
+    year: z.number().optional(),
+    cover_image: z.string().optional(),
+    results: z
+      .array(
+        z.object({
+          label: z.string(),
+          value: z.string(),
+        }),
+      )
+      .optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
+const teamCollection = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "src/content/team" }),
+  schema: z.object({
+    name: z.string(),
+    role: z.string(),
+    bio: z.string().optional(),
+    image: z.string().optional(),
+    linkedin: z.string().optional(),
+    order: z.number().optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
+const newsCollection = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "src/content/news" }),
+  schema: z.object({
+    title: z.string(),
+    excerpt: z.string(),
+    publishDate: z.string(),
+    author: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    heroImage: z.string().optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
 // Export collections
 export const collections = {
   // Pages
@@ -27,4 +73,7 @@ export const collections = {
   // sections
   ctaSection: ctaSectionCollection,
   paymentSection: paymentCollection,
+  caseStudies: caseStudyCollection,
+  team: teamCollection,
+  news: newsCollection,
 };

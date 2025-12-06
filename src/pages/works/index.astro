@@ -1,0 +1,63 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getCollection } from "astro:content";
+
+const caseStudies = (await getCollection(
+  "caseStudies",
+  ({ data }) => !data.draft,
+)).sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+---
+
+<Base title="Works">
+  <PageHeader
+    title="実績紹介"
+    description="伴走支援で成果を出したプロジェクトの一部をご紹介します。"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid gap-8 lg:grid-cols-2">
+        {caseStudies.map((item) => (
+          <article class="rounded-2xl border border-border/70 dark:border-border/30 overflow-hidden bg-white dark:bg-darkmode-body shadow-sm">
+            <img
+              src={item.data.cover_image ?? "/images/og-image.png"}
+              alt={item.data.title}
+              class="h-56 w-full object-cover"
+              loading="lazy"
+            />
+            <div class="p-8 space-y-4">
+              <p class="text-xs uppercase tracking-[0.3em] text-primary/70">
+                {item.data.industry} ・ {item.data.year}
+              </p>
+              <h2 class="text-2xl font-semibold">
+                <a href={`/works/${item.slug}`} class="hover:underline">
+                  {item.data.title}
+                </a>
+              </h2>
+              <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+                {item.data.summary}
+              </p>
+              {
+                item.data.results && (
+                  <dl class="grid md:grid-cols-2 gap-4 pt-4 border-t border-border/60 dark:border-border/40 text-sm">
+                    {item.data.results.map((result) => (
+                      <div>
+                        <dt class="text-text-light dark:text-darkmode-text-light uppercase tracking-wide">
+                          {result.label}
+                        </dt>
+                        <dd class="text-lg font-semibold text-primary">
+                          {result.value}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                )
+              }
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

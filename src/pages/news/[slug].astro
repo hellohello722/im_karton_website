@@ -1,0 +1,36 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getEntry } from "astro:content";
+
+const { slug } = Astro.params;
+const post = await getEntry("news", slug ?? "");
+
+if (!post) {
+  return Astro.redirect("/404");
+}
+
+const { data, body } = post;
+---
+
+<Base title={data.title}>
+  <PageHeader
+    title={data.title}
+    description={data.excerpt}
+    date={new Date(data.publishDate).toLocaleDateString("ja-JP")}
+  />
+
+  <section class="section pt-6">
+    <div class="container max-w-3xl">
+      {data.heroImage && (
+        <img
+          src={data.heroImage}
+          alt={data.title}
+          class="w-full rounded-2xl mb-8"
+          loading="lazy"
+        />
+      )}
+      <div class="prose dark:prose-invert max-w-none" set:html={body} />
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,66 @@
+---
+import Base from "@/layouts/Base.astro";
+import config from "@/config/config.json";
+const { site } = config;
+---
+
+<Base title={`その他イベント開催 | ${site.title}`}>
+  <section class="section">
+    <div class="container max-w-4xl space-y-8">
+      <p class="text-sm uppercase tracking-[0.3em] text-primary/80">Activities</p>
+      <h1 class="text-3xl md:text-4xl font-semibold">その他イベント開催</h1>
+      <p class="text-lg text-text-light dark:text-darkmode-text-light leading-relaxed">
+        ボードゲームを中心としたコミュニティづくりのために、プレイ会や交流会、ワークショップなどの自主企画イベントを実施しています。参加者同士のネットワーキングを促進し、新しいコラボレーションの場を生み出します。
+      </p>
+
+      <section class="space-y-3">
+        <h2 class="text-2xl font-semibold text-primary">開催しているプログラム例</h2>
+        <div class="grid gap-4 md:grid-cols-2">
+          <article class="rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm">
+            <h3 class="text-lg font-semibold">プレイ会 &amp; 試遊会</h3>
+            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+              新作や海外タイトルを体験できるプレイ会を定期開催。インストラクターが常駐し、初心者でも安心して参加できます。
+            </p>
+          </article>
+          <article class="rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm">
+            <h3 class="text-lg font-semibold">クリエイター・交流ミートアップ</h3>
+            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+              デザイナーやパブリッシャーが新作のプロトタイプを披露し、フィードバックを得られる場を提供しています。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-2xl font-semibold text-primary">イベント運営の特徴</h2>
+        <ul class="list-disc pl-6 space-y-2 text-text-light dark:text-darkmode-text-light leading-relaxed">
+          <li>目的に合わせた会場選定と運営ディレクション</li>
+          <li>参加者募集・チケット販売・当日の受付まで一気通貫でサポート</li>
+          <li>アンケート分析やアーカイブ制作など、次回に活かせる振り返りレポートを提供</li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-2xl font-semibold text-primary">開催までの流れ</h2>
+        <ol class="list-decimal pl-6 space-y-2 text-text-light dark:text-darkmode-text-light leading-relaxed">
+          <li>企画テーマ・ターゲット・開催規模の擦り合わせ</li>
+          <li>進行スケジュールの策定と告知・集客開始</li>
+          <li>会場運営・司会進行・アフターフォローまでサポート</li>
+        </ol>
+      </section>
+
+      <div class="rounded-3xl bg-primary/10 border border-primary/20 p-8 space-y-4">
+        <h2 class="text-xl font-semibold">共催・協賛のご相談</h2>
+        <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+          地域やコミュニティでイベントを開催したい方に向けて、IM Kartonが共催や運営代行を承ります。お気軽にお問い合わせください。
+        </p>
+        <a class="inline-flex items-center text-sm font-semibold text-primary" href="/contact">
+          お問い合わせフォームへ
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-1 h-4 w-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

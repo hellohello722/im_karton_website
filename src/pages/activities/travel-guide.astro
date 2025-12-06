@@ -1,0 +1,71 @@
+---
+import Base from "@/layouts/Base.astro";
+import config from "@/config/config.json";
+const { site } = config;
+---
+
+<Base title={`海外アナログゲームイベント旅行ガイド | ${site.title}`}>
+  <section class="section">
+    <div class="container max-w-4xl space-y-8">
+      <p class="text-sm uppercase tracking-[0.3em] text-primary/80">Activities</p>
+      <h1 class="text-3xl md:text-4xl font-semibold">海外アナログゲームイベント旅行ガイド</h1>
+      <p class="text-lg text-text-light dark:text-darkmode-text-light leading-relaxed">
+        海外開催のアナログゲーム・ボードゲームイベントに参加したい企業・クリエイターに向けた、準備から当日の運営までを包括的にサポートするプログラムです。渡航の手配や現地調査、商談アポイントの調整まで、IM Kartonの専門チームが伴走します。
+      </p>
+
+      <div class="space-y-6">
+        <section class="space-y-3">
+          <h2 class="text-2xl font-semibold text-primary">提供するサポート</h2>
+          <ul class="list-disc pl-6 space-y-2 text-text-light dark:text-darkmode-text-light leading-relaxed">
+            <li>イベント選定と目的設計（視察、出展、商談など）</li>
+            <li>航空券・宿泊・会場アクセスを含む渡航手配</li>
+            <li>出展ブースのデザイン、什器手配、現地スタッフ確保</li>
+            <li>現地通訳やビジネスマナーの事前トレーニング</li>
+            <li>商談・ネットワーキングのためのアポイント調整</li>
+            <li>現場での運営サポートおよびアフターフォロー</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-2xl font-semibold text-primary">よく利用されるイベント</h2>
+          <div class="grid gap-4 md:grid-cols-2">
+            <article class="rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm">
+              <h3 class="text-lg font-semibold">Essen SPIEL（ドイツ）</h3>
+              <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+                世界最大級のボードゲームイベント。B2B向けミーティングや先行リリースが集まるため、海外展開の足掛かりに最適です。
+              </p>
+            </article>
+            <article class="rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm">
+              <h3 class="text-lg font-semibold">Gen Con（アメリカ）</h3>
+              <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+                北米最大のアナログゲーム祭典。プレイヤーコミュニティへのアプローチと、現地パートナー開拓に強いイベントです。
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-2xl font-semibold text-primary">導入の流れ</h2>
+          <ol class="list-decimal pl-6 space-y-2 text-text-light dark:text-darkmode-text-light leading-relaxed">
+            <li>ヒアリングと目的設定、予算に合わせたイベント候補の提示</li>
+            <li>プロジェクト計画の策定と現地関係者との調整</li>
+            <li>渡航・展示・商談の実行支援、成果レポートの作成</li>
+          </ol>
+        </section>
+      </div>
+
+      <div class="rounded-3xl bg-primary/10 border border-primary/20 p-8 space-y-4">
+        <h2 class="text-xl font-semibold">相談・お見積り</h2>
+        <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+          海外出展の目的や規模に応じて、最適なプランをご提案します。お気軽にお問い合わせください。
+        </p>
+        <a class="inline-flex items-center text-sm font-semibold text-primary" href="/contact">
+          お問い合わせフォームへ
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-1 h-4 w-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,58 +1,358 @@
 ---
-import FeaturedProducts from "@/components/FeaturedProducts.astro";
-import config from "@/config/config.json";
-import CollectionsSlider from "@/functional-components/CollectionsSlider";
 import Base from "@/layouts/Base.astro";
-import { getCollectionProducts, getCollections } from "@/lib/shopify";
-import CallToAction from "@/partials/CallToAction.astro";
-import HeroSlider from "src/layouts/functional-components/HeroSlider";
+import config from "@/config/config.json";
+import ImageMod from "@/components/ImageMod.astro";
+import HeroSlider from "@/functional-components/HeroSlider";
 
-const { collections } = config.shopify;
+const hero = config.company;
+const heroSlides = Array.isArray(hero?.hero_slides) ? hero.hero_slides : [];
 
-// Fetch slider images for the HeroSlider
-const sliderImages = await getCollectionProducts({
-  collection: collections.hero_slider,
+const activities = [
+  {
+    title: "海外アナログゲームイベント旅行ガイド",
+    description:
+      "海外開催のボードゲーム・アナログゲームイベントへの渡航をサポートし、会場案内やスケジュール調整まで伴走します。",
+    image: "/images/IMG_6265.jpeg",
+    href: "/activities/travel-guide",
+  },
+  {
+    title: "レポート記事寄稿",
+    description:
+      "国内外イベントの取材・レポートを作成し、ファンや業界関係者に向けて最新トレンドや現地の空気感を発信します。",
+    image: "/images/IMG_6265.jpeg",
+    href: "/activities/reporting",
+  },
+  {
+    title: "その他イベント開催",
+    description:
+      "プレイ会や交流会など、アナログゲームを中心にした独自イベントを企画・運営し、コミュニティの輪を広げます。",
+    image: "/images/IMG_6265.jpeg",
+    href: "/activities/events",
+  },
+];
+
+const upcomingEventsSource = [
+  {
+    id: "game-market-2024-autumn",
+    title: "ゲームマーケット 2024 秋",
+    description:
+      "国内最大のアナログゲームイベント。Im Kartonブースにてガイドブックの新刊・既刊を頒布予定です。",
+    areaTag: "TOKYO",
+    venue: "東京ビッグサイト",
+    date: "2024-11-16",
+    icon: "arrow",
+  },
+  {
+    id: "board-game-business-expo-japan-2025",
+    title: "Board Game Business Expo Japan",
+    description:
+      "ビジネス向けのボードゲーム展示会『BGBE Japan』に出展。メディア活動に関する相談も承ります。",
+    areaTag: "OSAKA",
+    venue: "インテックス大阪",
+    date: "2025-02-14",
+    icon: "arrow",
+  },
+  {
+    id: "local-boardgame-sales-event",
+    title: "地方ボードゲーム販売イベント",
+    description:
+      "北海道ボドゲ博、名古屋ボードゲームフリーマーケットなど、地方各地のイベントにも不定期で参加しています。詳細はSNSにて告知します。",
+    areaTag: "LOCAL",
+    venue: "告知はSNSにて",
+    date: null,
+    icon: "twitter",
+  },
+];
+
+const weekdayLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+const formattedEvents = upcomingEventsSource
+  .map((event) => {
+    const dateObject = event.date ? new Date(event.date) : null;
+
+    const sortValue = dateObject ? dateObject.getTime() : Number.POSITIVE_INFINITY;
+
+    return {
+      ...event,
+      dateObject,
+      sortValue,
+      yearLabel: dateObject ? `${dateObject.getFullYear()}` : "INFO",
+      monthDayLabel: dateObject
+        ? `${String(dateObject.getMonth() + 1).padStart(2, "0")}.${String(dateObject.getDate()).padStart(2, "0")}`
+        : "TBA",
+      weekdayLabel: dateObject ? weekdayLabels[dateObject.getDay()] : "",
+    };
+  })
+  .sort((a, b) => a.sortValue - b.sortValue);
+
+const nextEventIndex = formattedEvents.findIndex((event) =>
+  Number.isFinite(event.sortValue),
+);
+
+const upcomingEvents = formattedEvents.map((event, index) => {
+  const isNext = nextEventIndex === -1 ? index === 0 : index === nextEventIndex;
+
+  return {
+    ...event,
+    isNext,
+    statusLabel: isNext ? "NEXT" : event.yearLabel,
+  };
 });
-const heroProducts = sliderImages.products;
 
-const collectionProducts = await getCollections();
-
-// Fetch featured products
-const { products: featuredProducts } = await getCollectionProducts({
-  collection: collections.featured_products,
-  reverse: false,
-});
+const aboutUsContent = {
+  intro:
+    "IM Kartonはアナログゲーム文化を軸に、企業とファンの接点を設計する出展支援チームです。",
+  paragraphs: [
+    "編集、デザイン、マーケティング、現場運営の専門家が集まり、企画構想からブースづくり、当日のオペレーション、振り返りまで一気通貫で伴走します。",
+    "国内外のイベントで培ったネットワークと現場知見を活かし、単なる出展にとどまらず、リード獲得やコミュニティ形成に結び付く体験価値を設計します。",
+  ],
+};
 ---
-
 <Base>
-  <section>
+  {
+    heroSlides.length > 0 ? (
+      <section class="pt-6 md:pt-10">
+        <div class="container">
+          <HeroSlider slides={heroSlides} client:load />
+        </div>
+      </section>
+    ) : (
+      <section class="py-16 md:py-24">
+        <div class="container">
+          <div class="grid gap-10 lg:grid-cols-[1.1fr_1fr] items-center">
+            <div class="space-y-6">
+              <p class="text-sm uppercase tracking-[0.35em] text-primary/80">
+                Corporate Transformation Partner
+              </p>
+              <h1 class="text-4xl md:text-5xl font-semibold leading-tight">
+                {hero?.tagline}
+              </h1>
+              <p class="text-lg text-text-light dark:text-darkmode-text-light max-w-2xl">
+                {hero?.lead}
+              </p>
+
+              <div class="flex flex-wrap gap-4">
+                {
+                  hero?.primary_cta && (
+                    <a class="btn btn-primary btn-sm md:btn-md" href={hero.primary_cta.link}>
+                      {hero.primary_cta.label}
+                    </a>
+                  )
+                }
+                {
+                  hero?.secondary_cta && (
+                    <a class="btn btn-outline-primary btn-sm md:btn-md" href={hero.secondary_cta.link}>
+                      {hero.secondary_cta.label}
+                    </a>
+                  )
+                }
+              </div>
+
+              {
+                hero?.stats?.length && (
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t border-border/70 dark:border-border/40">
+                    {hero.stats.map((item) => (
+                      <div>
+                        <p class="text-2xl font-semibold text-primary">{item.value}</p>
+                        <p class="text-sm text-text-light dark:text-darkmode-text-light">
+                          {item.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )
+              }
+            </div>
+
+            <div class="relative">
+              <div class="absolute inset-0 -z-10 rounded-[32px] bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 blur-2xl"></div>
+              <ImageMod
+                src="/images/banner.png"
+                width={720}
+                height={520}
+                alt="IM Karton team"
+                class="rounded-3xl shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section bg-light dark:bg-darkmode-light/60">
     <div class="container">
-      <div class="bg-gradient py-10 rounded-md">
-        <HeroSlider products={heroProducts} client:load />
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {activities.map((activity) => (
+          <a
+            class="group rounded-2xl border border-border/70 dark:border-border/30 bg-white dark:bg-darkmode-body overflow-hidden shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+            href={activity.href}
+          >
+            <div class="relative h-72 md:h-80 w-full overflow-hidden">
+              <img
+                src={activity.image}
+                alt={activity.title}
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent"></div>
+            </div>
+            <div class="p-6 space-y-3">
+              <h3 class="text-xl font-semibold">{activity.title}</h3>
+              <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+                {activity.description}
+              </p>
+              <span class="inline-flex items-center text-sm font-medium text-primary">
+                詳しく見る
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="ml-1 h-4 w-4 transition group-hover:translate-x-1"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
-  {/* category section */}
   <section class="section">
     <div class="container">
-      <div class="text-center mb-6 md:mb-14">
-        <h2>Collections</h2>
+      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-10">
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-primary/80">Events</p>
+          <h2 class="text-3xl font-semibold">出展予定イベント</h2>
+          <p class="mt-3 text-sm text-text-light dark:text-darkmode-text-light max-w-2xl">
+            直近で参加予定のイベント情報です。青色のカードが最も直近で出展するイベントを示します。
+          </p>
+        </div>
       </div>
-      <CollectionsSlider client:load collections={collectionProducts} />
+
+      <div class="space-y-6">
+        {upcomingEvents.map((event) => (
+          <article class={`rounded-3xl border border-border/70 dark:border-border/30 bg-white dark:bg-darkmode-body shadow-sm transition ${
+            event.isNext ? "ring-2 ring-primary/30" : ""
+          }`}>
+            <div class="grid gap-6 md:grid-cols-[120px_1fr_auto] md:items-center p-6 md:p-8">
+              <div
+                class={`flex flex-col items-center justify-center rounded-2xl px-4 py-5 text-center md:px-6 md:py-6 ${
+                  event.isNext
+                    ? "bg-primary text-white shadow-[0_12px_26px_rgba(0,86,168,0.22)]"
+                    : "bg-light text-primary dark:bg-darkmode-light/60"
+                }`}
+              >
+                <span
+                  class={`text-xs font-semibold uppercase tracking-[0.4em] ${
+                    event.isNext ? "text-white/80" : "text-primary/70"
+                  }`}
+                >
+                  {event.statusLabel}
+                </span>
+                <span
+                  class={`mt-2 text-3xl md:text-4xl font-semibold ${
+                    event.isNext ? "text-white" : "text-primary"
+                  }`}
+                >
+                  {event.monthDayLabel}
+                </span>
+                <span
+                  class={`mt-2 text-xs font-medium uppercase tracking-[0.4em] opacity-80 min-h-[1rem] ${
+                    event.isNext ? "text-white" : "text-text-light dark:text-darkmode-text-light"
+                  }`}
+                >
+                  {event.weekdayLabel}
+                </span>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em]">
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-primary">
+                    {event.areaTag}
+                  </span>
+                  <span class="flex items-center gap-1 text-[0.7rem] font-normal tracking-normal text-text-light dark:text-darkmode-text-light">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      class="h-3.5 w-3.5 text-primary"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 2a5 5 0 00-5 5c0 3.53 4.08 8.38 4.35 8.69.36.42.94.42 1.3 0 .27-.31 4.35-5.16 4.35-8.69A5 5 0 0010 2zm0 7a2 2 0 110-4 2 2 0 010 4z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    {event.venue}
+                  </span>
+                </div>
+                <h3 class="text-xl font-semibold">{event.title}</h3>
+                <p class="text-sm leading-relaxed text-text-light dark:text-darkmode-text-light">
+                  {event.description}
+                </p>
+              </div>
+
+              <div class="flex items-center justify-end self-stretch">
+                <span
+                  class={`inline-flex h-11 w-11 items-center justify-center rounded-full border ${
+                    event.isNext
+                      ? "border-primary/40 bg-primary/10 text-primary"
+                      : "border-border/60 text-primary"
+                  }`}
+                >
+                  {event.icon === "twitter" ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="h-4 w-4"
+                      aria-hidden="true"
+                    >
+                      <path d="M21 5.92a6.46 6.46 0 01-1.89.52 3.29 3.29 0 001.44-1.8 6.56 6.56 0 01-2.07.78 3.28 3.28 0 00-5.6 2.24c0 .26.03.52.09.76a9.32 9.32 0 01-6.77-3.43 3.28 3.28 0 001.01 4.38 3.25 3.25 0 01-1.49-.41v.04a3.28 3.28 0 002.63 3.22 3.3 3.3 0 01-1.48.06 3.29 3.29 0 003.07 2.28A6.58 6.58 0 013 18.13 9.3 9.3 0 008.05 19.5c6.53 0 10.1-5.4 10.1-10.08 0-.15 0-.3-.01-.45A7.2 7.2 0 0021 5.92z" />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.6"
+                      stroke="currentColor"
+                      class="h-4 w-4"
+                      aria-hidden="true"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  )}
+                </span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
-  {/* Featured Products section */}
-  <section>
+  <section class="section bg-light dark:bg-darkmode-light/60">
     <div class="container">
-      <div class="text-center mb-6 md:mb-14">
-        <h2 class="mb-2">Featured Products</h2>
-        <p class="md:h5">Explore Today's Featured Picks!</p>
+      <div class="max-w-3xl space-y-5">
+        <p class="text-sm uppercase tracking-[0.35em] text-primary/80">About</p>
+        <h2 class="text-3xl font-semibold">About us</h2>
+        <p class="text-base text-text-light dark:text-darkmode-text-light leading-relaxed">
+          {aboutUsContent.intro}
+        </p>
+        <div class="space-y-4 text-sm leading-relaxed text-text-light dark:text-darkmode-text-light">
+          {aboutUsContent.paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
       </div>
-      <FeaturedProducts products={featuredProducts} />
     </div>
   </section>
-
-  <CallToAction />
 </Base>

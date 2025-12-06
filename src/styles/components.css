@@ -213,6 +213,34 @@
   @apply text-sm md:text-base font-medium transition text-text-light hover:text-text-dark dark:text-darkmode-text dark:hover:text-darkmode-primary;
 }
 
+.site-footer {
+  background-color: #0056a8;
+  color: #ffffff;
+}
+
+.site-footer .footer-link {
+  color: #ffffff;
+}
+
+.site-footer .footer-link a {
+  color: #ffffff;
+}
+
+.site-footer .footer-link a:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.site-footer .social-icons li a {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+}
+
+.site-footer .social-icons li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
 /* content style */
 .content {
   @apply prose max-w-none;

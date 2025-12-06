@@ -2,7 +2,11 @@
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import { humanize } from "@/lib/utils/textConverter";
 
-const { title = "" }: { title?: string } = Astro.props;
+const {
+  title = "",
+  description,
+  date,
+}: { title?: string; description?: string; date?: string } = Astro.props;
 ---
 
 <section>
@@ -11,6 +15,22 @@ const { title = "" }: { title?: string } = Astro.props;
       class="bg-gradient-to-b from-body to-light px-8 py-14 dark:from-darkmode-body dark:to-darkmode-light"
     >
       <h1 set:text={humanize(title)} />
+      {
+        (description || date) && (
+          <div class="mt-4 space-y-2 max-w-3xl mx-auto">
+            {description && (
+              <p class="text-text-light dark:text-darkmode-text-light">
+                {description}
+              </p>
+            )}
+            {date && (
+              <time class="text-sm uppercase tracking-[0.3em] text-primary/80">
+                {date}
+              </time>
+            )}
+          </div>
+        )
+      }
       <Breadcrumbs className="mt-6" />
     </div>
   </div>

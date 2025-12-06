@@ -1,59 +1,109 @@
 {
   "site": {
-    "title": "Storeplate",
-    "base_url": "https://storeplate.vercel.app/",
+    "title": "IM Karton",
+    "base_url": "https://www.im-karton.jp/",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
-    "logo": "/images/logo.png",
-    "logo_darkmode": "/images/logo-darkmode.png",
-    "logo_width": "150",
-    "logo_height": "33",
-    "logo_text": "Storeplate"
+    "logo": "/images/im_Karton_logo.png",
+    "logo_darkmode": "/images/im_Karton_logo.png",
+    "logo_width": "180",
+    "logo_height": "28",
+    "logo_text": "IM Karton"
   },
 
   "announcement": {
-    "enable": true,
-    "content": "<span class='text-center block'>♥️ Loving Storeplate? <a class='underline' href='https://github.com/zeon-studio/storeplate' target='_blank' rel='noopener'>Please ⭐️ on Github</a></span>",
+    "enable": false,
+    "content": "",
     "expire_days": 7
   },
 
   "settings": {
-    "search": true,
-    "account": true,
+    "search": false,
+    "account": false,
     "sticky_header": true,
     "theme_switcher": true,
-    "default_theme": "system"
+    "default_theme": "light"
   },
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Designed And Developed by [Zeon Studio](https://zeon.studio)"
+    "copyright": "© IM Karton Inc."
   },
 
-  "navigation_button": {
-    "enable": true,
-    "label": "Get Started",
-    "link": "https://github.com/zeon-studio/storeplate"
+  "metadata": {
+    "meta_author": "IM Karton Inc.",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "IM Kartonのコーポレートサイト。事業内容、実績、最新情報をご紹介します。"
+  },
+
+  "company": {
+    "tagline": "つながりを形にするパッケージソリューション",
+    "lead": "IM Kartonは製造業・物流業の顧客体験を、デジタルとリアルの両面から再設計します。",
+    "primary_cta": {
+      "label": "お問い合わせ",
+      "link": "/contact"
+    },
+    "secondary_cta": {
+      "label": "活動を見る",
+      "link": "/activities/travel-guide"
+    },
+    "stats": [
+      {
+        "label": "プロジェクト継続率",
+        "value": "92%"
+      },
+      {
+        "label": "導入企業数",
+        "value": "120+"
+      },
+      {
+        "label": "平均改善期間",
+        "value": "3ヶ月"
+      }
+    ],
+    "hero_slides": [
+      {
+        "title": "つながりを形にするパッケージソリューション",
+        "description": "製造・物流の現場課題を一体的に解決する、IM KartonのDX支援プログラム。",
+        "image": {
+          "src": "/images/IMG_6265.jpeg",
+          "alt": "モナコ港の夕景"
+        },
+        "cta": {
+          "label": "お問い合わせ",
+          "link": "/contact"
+        }
+      },
+      {
+        "title": "現場の声に寄り添い成果へ導く",
+        "description": "現場定着まで伴走し、改善指標を共有しながら変革を進めます。",
+        "image": {
+          "src": "/images/IMG_6265.jpeg",
+          "alt": "港の夜景"
+        },
+        "cta": {
+          "label": "活動紹介を読む",
+          "link": "/activities/travel-guide"
+        }
+      },
+      {
+        "title": "顧客体験からサプライチェーンまで最適化",
+        "description": "データ活用と現場改善を掛け合わせたソリューションで、事業の成長を後押しします。",
+        "image": {
+          "src": "/images/IMG_6265.jpeg",
+          "alt": "港を望む全景"
+        },
+        "cta": {
+          "label": "資料請求",
+          "link": "/contact"
+        }
+      }
+    ]
   },
 
   "google_tag_manager": {
     "enable": false,
     "gtm_id": "GTM-XXXXXX"
-  },
-
-  "metadata": {
-    "meta_author": "zeon.studio",
-    "meta_image": "/images/og-image.png",
-    "meta_description": "Shopify Storefront Boilerplate"
-  },
-
-  "shopify": {
-    "currencySymbol": "৳",
-    "currencyCode": "BDT",
-    "collections": {
-      "hero_slider": "hidden-homepage-carousel",
-      "featured_products": "featured-products"
-    }
   }
 }

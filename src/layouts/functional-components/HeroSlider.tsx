@@ -1,63 +1,78 @@
-import type { Product } from "@/lib/shopify/types";
 import React from "react";
+import type { FC } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const HeroSlider = ({ products }: { products: Product[] }) => {
+type HeroSlide = {
+  title: string;
+  description?: string;
+  image: {
+    src: string;
+    alt?: string;
+  };
+  cta?: {
+    label: string;
+    link: string;
+  };
+};
+
+type HeroSliderProps = {
+  slides: HeroSlide[];
+};
+
+const HeroSlider: FC<HeroSliderProps> = ({ slides }) => {
+  if (!slides.length) {
+    return null;
+  }
+
   return (
-    <>
-      <Swiper
-        pagination={{
-          clickable: true,
-          bulletClass: "banner-pagination-bullet",
-          bulletActiveClass: "banner-pagination-bullet-active",
-        }}
-        modules={[Pagination]}
-      >
-        {products?.map((item: Product) => (
-          <SwiperSlide key={item.id}>
-            <div className="row items-center px-7 xl:px-16">
-              <div className="sm:col-12 lg:col-6 order-2 lg:order-0">
-                <div className="text-center py-10 lg:py-0">
-                  {item?.description && (
-                    <p className="mb-2 lg:mb-3 text-text-light dark:text-darkmode-text-light font-medium md:text-xl">
-                      {item.description}
+    <Swiper
+      pagination={{
+        clickable: true,
+        bulletClass: "banner-pagination-bullet",
+        bulletActiveClass: "banner-pagination-bullet-active",
+      }}
+      modules={[Pagination]}
+    >
+      {slides.map((slide, index) => (
+        <SwiperSlide key={`${slide.title}-${index}`}>
+          <div className="relative min-h-[420px] md:min-h-[520px] flex items-center overflow-hidden rounded-3xl">
+            <img
+              src={slide.image.src}
+              alt={slide.image.alt ?? slide.title}
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/55 to-black/10"></div>
+
+            <div className="relative w-full">
+              <div className="container">
+                <div className="max-w-2xl py-16 md:py-24 text-white">
+                  {slide.description && (
+                    <p className="mb-4 text-base md:text-lg text-white/90">
+                      {slide.description}
                     </p>
                   )}
-                  <div className="row">
-                    <h1 className="mb-4 lg:mb-10 col-10 sm:col-8 lg:col-12 mx-auto">
-                      {item.title}
-                    </h1>
-                  </div>
-                  {item.handle && (
+                  <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-6">
+                    {slide.title}
+                  </h1>
+                  {slide.cta && slide.cta.link && (
                     <a
                       className="btn btn-sm md:btn-lg btn-primary font-medium"
-                      href={`products/${item.handle}`}
+                      href={slide.cta.link}
                     >
-                      Shop Now
+                      {slide.cta.label}
                     </a>
                   )}
                 </div>
               </div>
-
-              <div className="sm:col-12 lg:col-6">
-                {item.featuredImage && (
-                  <img
-                    src={item.featuredImage.url}
-                    className="mx-auto w-[388px] lg:w-full"
-                    width={"507"}
-                    height={"385"}
-                    alt="banner image"
-                  />
-                )}
-              </div>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 

@@ -1,0 +1,78 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getEntry } from "astro:content";
+
+const { slug } = Astro.params;
+const caseStudy = await getEntry("caseStudies", slug ?? "");
+
+if (!caseStudy) {
+  return Astro.redirect("/404");
+}
+
+const { data, body } = caseStudy;
+---
+
+<Base title={caseStudy.data.title}>
+  <PageHeader title={data.title} description={data.summary} />
+
+  <section class="section pt-6">
+    <div class="container max-w-4xl">
+      <div class="space-y-10">
+        <div class="grid gap-6 md:grid-cols-2">
+          <div>
+            <h3 class="text-sm font-semibold text-text-light dark:text-darkmode-text-light uppercase tracking-[0.3em] mb-2">
+              プロジェクト概要
+            </h3>
+            <ul class="space-y-2 text-sm">
+              {data.industry && (
+                <li>
+                  <span class="font-medium text-text-dark dark:text-white">業種:</span> {data.industry}
+                </li>
+              )}
+              {data.year && (
+                <li>
+                  <span class="font-medium text-text-dark dark:text-white">実施年:</span> {data.year}
+                </li>
+              )}
+            </ul>
+          </div>
+          {
+            data.results && (
+              <div>
+                <h3 class="text-sm font-semibold text-text-light dark:text-darkmode-text-light uppercase tracking-[0.3em] mb-2">
+                  成果指標
+                </h3>
+                <dl class="space-y-3">
+                  {data.results.map((result) => (
+                    <div>
+                      <dt class="text-xs text-text-light dark:text-darkmode-text-light uppercase tracking-wide">
+                        {result.label}
+                      </dt>
+                      <dd class="text-xl font-semibold text-primary">
+                        {result.value}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )
+          }
+        </div>
+
+        {
+          data.cover_image && (
+            <img
+              src={data.cover_image}
+              alt={data.title}
+              class="w-full rounded-2xl object-cover"
+              loading="lazy"
+            />
+          )
+        }
+
+        <div class="prose dark:prose-invert max-w-none" set:html={body} />
+      </div>
+    </div>
+  </section>
+</Base>

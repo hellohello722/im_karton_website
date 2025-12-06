@@ -6,9 +6,12 @@ import Base from "@/layouts/Base.astro";
 import { getListPage } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import PageHeader from "@/partials/PageHeader.astro";
-import { FaBoxOpen, FaHeadset, FaRegCheckCircle } from "react-icons/fa";
+import { getCollection } from "astro:content";
 
 const about = await getListPage("about", "-index");
+const teamMembers = (await getCollection("team", ({ data }) => !data.draft)).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99),
+);
 if (about.data.draft) {
   return Astro.redirect("/404");
 }
@@ -26,8 +29,6 @@ const {
   testimonials_section_enable,
   testimonials_section_title,
   testimonials,
-  staff_section_enable,
-  staff,
 } = about.data;
 ---
 
@@ -43,35 +44,35 @@ const {
     <div class="container">
       {
         about_us?.map((section, index) => (
-          <div class={`lg:flex gap-8 mt-14 lg:mt-28`}>
+          <div class="lg:flex gap-10 mt-16 lg:mt-28 items-center">
             {index % 2 === 0 ? (
               <>
                 <ImageMod
-                  class="rounded-md mx-auto"
+                  class="rounded-2xl mx-auto shadow-lg"
                   src={section?.image!}
                   width={536}
                   height={449}
                   alt={section?.title}
                 />
-                <div class="mt-10 lg:mt-0">
-                  <h2>{section?.title}</h2>
+                <div class="mt-10 lg:mt-0 space-y-4">
+                  <h2 class="text-3xl font-semibold">{section?.title}</h2>
                   <p
-                    class="mt-4 text-text-light dark:text-darkmode-text-light leading-7"
+                    class="text-text-light dark:text-darkmode-text-light leading-7"
                     set:html={markdownify(section?.content)}
                   />
                 </div>
               </>
             ) : (
               <>
-                <div>
-                  <h2>{section.title}</h2>
+                <div class="space-y-4">
+                  <h2 class="text-3xl font-semibold">{section.title}</h2>
                   <p
-                    class="mt-4 text-text-light dark:text-darkmode-text-light leading-7"
+                    class="text-text-light dark:text-darkmode-text-light leading-7"
                     set:html={markdownify(section.content)}
                   />
                 </div>
                 <ImageMod
-                  class="rounded-md mx-auto mt-10 lg:mt-0"
+                  class="rounded-2xl mx-auto mt-10 lg:mt-0 shadow-lg"
                   src={section.image}
                   width={536}
                   height={449}
@@ -95,80 +96,37 @@ const {
     )
   }
 
-  <section>
-    <div class="container">
-      <div class="text-center">
-        <h2>Our Staff</h2>
-
-        <div
-          class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-14"
-        >
-          {
-            staff_section_enable &&
-              staff!.map(
-                (s: { name: string; designation: string; avatar: string }) => (
-                  <div class="border border-border rounded-lg">
-                    <div class="py-6 space-y-2">
-                      <h3 class="h4">{s.name}</h3>
-                      <p class="text-text-dark dark:text-darkmode-text-light">
-                        {s.designation}
-                      </p>
-                    </div>
-                    <div class="bg-light rounded-b-xl mx-auto">
-                      <ImageMod
-                        src={s.avatar}
-                        alt={`Staff-${s.name}`}
-                        width={290}
-                        height={250}
-                        class="mx-auto w-full h-[250px] rounded-b-xl overflow-hidden"
-                      />
-                    </div>
-                  </div>
-                )
-              )
-          }
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div
-        class="bg-light px-7 py-20 dark:bg-darkmode-light text-center rounded-md"
-      >
-        <h2>Reasons to shop with us</h2>
-
-        <div class="row justify-center gap-6 mt-14">
-          <div class="col-6 md:col-5 lg:col-3">
-            <div class="flex justify-center">
-              <FaHeadset size={48} />
-            </div>
-            <h3 class="md:h4 mt-6 mb-4">24/7 Friendly Support</h3>
-            <p>Our support team always ready for you to 7 days a week</p>
+  {
+    teamMembers.length > 0 && (
+      <section class="section bg-light dark:bg-darkmode-light/60">
+        <div class="container">
+          <div class="text-center mb-10">
+            <p class="text-sm uppercase tracking-[0.35em] text-primary/80">Team</p>
+            <h2 class="text-3xl font-semibold">チーム紹介</h2>
           </div>
 
-          <div class="col-6 md:col-5 lg:col-3">
-            <div class="flex justify-center">
-              <FaBoxOpen size={48} />
-            </div>
-            <h3 class="md:h4 mt-6 mb-4">7 Days Easy Return</h3>
-            <p>Product any fault within 7 days for an immediately exchange.</p>
-          </div>
-
-          <div class="col-6 md:col-5 lg:col-3">
-            <div class="flex justify-center">
-              <FaRegCheckCircle size={48} />
-            </div>
-            <h3 class="md:h4 mt-6 mb-4">Quality Guaranteed</h3>
-            <p>
-              If your product are not perfect, return them for a full refund
-            </p>
+          <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {teamMembers.map((member) => (
+              <div class="rounded-2xl border border-border/70 dark:border-border/40 bg-white dark:bg-darkmode-body shadow-sm p-6 text-center">
+                <ImageMod
+                  src={member.data.image ?? "/images/staff/staff.png"}
+                  alt={member.data.name}
+                  width={220}
+                  height={220}
+                  class="mx-auto h-44 w-44 rounded-full object-cover"
+                />
+                <h3 class="text-xl font-semibold mt-4">{member.data.name}</h3>
+                <p class="text-sm text-primary mb-3">{member.data.role}</p>
+                <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+                  {member.data.bio}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
+    )
+  }
 
   <section>
     <div class="container">

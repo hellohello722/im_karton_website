@@ -5,27 +5,16 @@
       "url": "/"
     },
     {
-      "name": "Products",
-      "url": "/products"
+      "name": "Works",
+      "url": "/works"
     },
     {
-      "name": "Pages",
-      "url": "",
-      "hasChildren": true,
-      "children": [
-        {
-          "name": "About",
-          "url": "/about"
-        },
-        {
-          "name": "Contact",
-          "url": "/contact"
-        },
-        {
-          "name": "404 Page",
-          "url": "/404"
-        }
-      ]
+      "name": "News",
+      "url": "/news"
+    },
+    {
+      "name": "About",
+      "url": "/about"
     },
     {
       "name": "Contact",
@@ -34,16 +23,12 @@
   ],
   "footer": [
     {
-      "name": "About",
-      "url": "/about"
-    },
-    {
-      "name": "Products",
-      "url": "/products"
-    },
-    {
       "name": "Contact",
       "url": "/contact"
+    },
+    {
+      "name": "News",
+      "url": "/news"
     }
   ],
   "footerCopyright": [
