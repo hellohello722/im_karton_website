@@ -5,4 +5,5 @@ bio: "JamstackとヘッドレスCMSの導入支援が専門領域。高速なプ
 image: "/images/staff/staff.png"
 linkedin: "https://www.linkedin.com/"
 order: 2
+draft: true
 ---

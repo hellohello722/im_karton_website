@@ -1,6 +1,6 @@
 {
   "site": {
-    "title": "IM Karton",
+    "title": "Im Karton",
     "base_url": "https://www.im-karton.jp/",
     "base_path": "/",
     "trailing_slash": false,
@@ -9,7 +9,7 @@
     "logo_darkmode": "/images/im_Karton_logo.png",
     "logo_width": "180",
     "logo_height": "28",
-    "logo_text": "IM Karton"
+    "logo_text": "Im Karton"
   },
 
   "announcement": {
@@ -22,81 +22,68 @@
     "search": false,
     "account": false,
     "sticky_header": true,
-    "theme_switcher": true,
+    "theme_switcher": false,
     "default_theme": "light"
   },
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "© IM Karton Inc."
+    "copyright": "© Im Karton Inc."
   },
 
   "metadata": {
-    "meta_author": "IM Karton Inc.",
+    "meta_author": "Im Karton Inc.",
     "meta_image": "/images/og-image.png",
-    "meta_description": "IM Kartonのコーポレートサイト。事業内容、実績、最新情報をご紹介します。"
+    "meta_description": "海外アナログゲームイベントを訪ねて旅する3人組、Im Karton。SPIEL Essen・Gen Con・FIJなどの旅行ガイドブックを制作しています。"
   },
 
   "company": {
-    "tagline": "つながりを形にするパッケージソリューション",
-    "lead": "IM Kartonは製造業・物流業の顧客体験を、デジタルとリアルの両面から再設計します。",
+    "tagline": "今すぐやろう！エッセン準備",
+    "lead": "海外アナログゲームイベントを探して旅する3人組、Im Karton。SPIEL Essen、Gen Con、FIJなど大規模ゲームイベントの旅行ガイドを作ったり、メディアへのイベントレポート寄稿などを行っています。",
     "primary_cta": {
-      "label": "お問い合わせ",
-      "link": "/contact"
+      "label": "",
+      "link": ""
     },
     "secondary_cta": {
       "label": "活動を見る",
       "link": "/activities/travel-guide"
     },
-    "stats": [
-      {
-        "label": "プロジェクト継続率",
-        "value": "92%"
-      },
-      {
-        "label": "導入企業数",
-        "value": "120+"
-      },
-      {
-        "label": "平均改善期間",
-        "value": "3ヶ月"
-      }
-    ],
+    "stats": [],
     "hero_slides": [
       {
-        "title": "つながりを形にするパッケージソリューション",
-        "description": "製造・物流の現場課題を一体的に解決する、IM KartonのDX支援プログラム。",
+        "title": "Essen Spiel Guidebook 2023",
+        "description": "出展者・参加者に大好評！世界最大のボードゲームイベントと言われるドイツの「エッセン」ことSPIEL Essen。本書ではその魅力や旅の手配、現地で役立つ便利な工夫などを紹介しています。",
         "image": {
           "src": "/images/IMG_6265.jpeg",
           "alt": "モナコ港の夕景"
         },
         "cta": {
-          "label": "お問い合わせ",
-          "link": "/contact"
+          "label": "詳しく見る",
+          "link": "/activities/travel-guide#essen-spiel-2023"
         }
       },
       {
-        "title": "現場の声に寄り添い成果へ導く",
-        "description": "現場定着まで伴走し、改善指標を共有しながら変革を進めます。",
+        "title": "【新刊】FIJ Cannes Guidebook",
+        "description": "フランスにもこんなイベントが！？　宮野華也さんのアスドール受賞やJapanパビリオンの出展により注目集まるフランス・FIJのガイドブック、できました。世界第3位イベントの情報をしっかりと紹介する特大ボリュームの一冊。",
         "image": {
           "src": "/images/IMG_6265.jpeg",
           "alt": "港の夜景"
         },
         "cta": {
-          "label": "活動紹介を読む",
-          "link": "/activities/travel-guide"
+          "label": "詳しく見る",
+          "link": "/activities/travel-guide#fij-cannes"
         }
       },
       {
-        "title": "顧客体験からサプライチェーンまで最適化",
-        "description": "データ活用と現場改善を掛け合わせたソリューションで、事業の成長を後押しします。",
+        "title": "note『月刊Im Karton』",
+        "description": "ご要望に応えて現在準備中！海外イベントの「今」を知りたい方へ、チケット販売の開始情報や航空券、その他便利な状況を月1回配信します。乞うご期待",
         "image": {
           "src": "/images/IMG_6265.jpeg",
           "alt": "港を望む全景"
         },
         "cta": {
-          "label": "資料請求",
-          "link": "/contact"
+          "label": "準備中",
+          "link": ""
         }
       }
     ]

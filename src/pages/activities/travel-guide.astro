@@ -14,7 +14,7 @@ const { site } = config;
       </p>
 
       <div class="grid gap-6 md:grid-cols-2">
-        <article class="rounded-3xl border border-border/60 dark:border-border/30 bg-white dark:bg-darkmode-body shadow-sm overflow-hidden">
+        <article id="essen-spiel-2023" class="rounded-3xl border border-border/60 dark:border-border/30 bg-white dark:bg-darkmode-body shadow-sm overflow-hidden">
           <img
             src="/images/books/Essen_Spiel_Guidebook_2023.jpg"
             alt="Essen SPIEL ガイドブック"
@@ -34,7 +34,7 @@ const { site } = config;
           </div>
         </article>
 
-        <article class="rounded-3xl border border-border/60 dark:border-border/30 bg-white dark:bg-darkmode-body shadow-sm overflow-hidden">
+        <article id="gen-con" class="rounded-3xl border border-border/60 dark:border-border/30 bg-white dark:bg-darkmode-body shadow-sm overflow-hidden">
           <img
             src="/images/books/GenCon_Guidebook.jpg"
             alt="Gen Con ガイドブック"
@@ -50,6 +50,46 @@ const { site } = config;
               <li>500以上のイベントプログラムから目的別にセレクト</li>
               <li>現地クリエイターへのインタビュー記事</li>
               <li>アフターイベントや観光情報を含む滞在モデルプラン</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="essen-spiel-2023-plus-one" class="rounded-3xl border border-border/60 dark:border-border/30 bg-white dark:bg-darkmode-body shadow-sm overflow-hidden">
+          <img
+            src="/images/books/Essen_Spiel_Guidebook%202023_Plus_One.jpg"
+            alt="Essen SPIEL Guidebook 2023 Plus One"
+            class="h-64 w-full object-cover"
+            loading="lazy"
+          />
+          <div class="p-6 space-y-3">
+            <h2 class="text-2xl font-semibold text-primary">Essen SPIEL Guidebook 2023 Plus One</h2>
+            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+              エッセンSPIEL 2023の取材で収録しきれなかった情報を追補した特別版。本編と合わせて読むことで、エッセン滞在の楽しみをさらに広げることができます。
+            </p>
+            <ul class="list-disc pl-5 text-sm text-text-light dark:text-darkmode-text-light space-y-1">
+              <li>本編未収録のブース・メーカーレポート</li>
+              <li>取材後記と会場外イベントの詳細</li>
+              <li>次回開催に向けたプレビュー情報</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="fij-cannes" class="rounded-3xl border border-border/60 dark:border-border/30 bg-white dark:bg-darkmode-body shadow-sm overflow-hidden">
+          <img
+            src="/images/books/FIJ_Cannes_Guidebook.png"
+            alt="FIJ カンヌ ガイドブック"
+            class="h-64 w-full object-cover"
+            loading="lazy"
+          />
+          <div class="p-6 space-y-3">
+            <h2 class="text-2xl font-semibold text-primary">FIJ Cannes Guidebook</h2>
+            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+              フランス・カンヌで開催される国際ゲームフェスティバル（FIJ）の取材ガイドブック。ヨーロッパのボードゲームシーンを体感したい方に向けた現地密着レポートです。
+            </p>
+            <ul class="list-disc pl-5 text-sm text-text-light dark:text-darkmode-text-light space-y-1">
+              <li>カンヌ会場のホール構成と注目展示ブース</li>
+              <li>フランス語コミュニケーション支援フレーズ集</li>
+              <li>カンヌ観光情報と周辺ゲームショップガイド</li>
             </ul>
           </div>
         </article>
@@ -85,18 +125,6 @@ const { site } = config;
         </div>
       </section>
 
-      <div class="rounded-3xl bg-primary/10 border border-primary/20 p-8 space-y-4">
-        <h2 class="text-xl font-semibold">制作・取材のご相談</h2>
-        <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
-          次号の制作や共同企画、広告掲載などに関するお問い合わせを承っています。イベント主催者・パートナー企業とのコラボレーションも歓迎です。
-        </p>
-        <a class="inline-flex items-center text-sm font-semibold text-primary" href="/contact">
-          お問い合わせフォームへ
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-1 h-4 w-4">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-          </svg>
-        </a>
-      </div>
     </div>
   </section>
 </Base>
