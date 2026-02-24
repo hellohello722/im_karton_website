@@ -5,4 +5,5 @@ bio: "サービスデザインとユーザーリサーチを担当。複雑な�
 image: "/images/staff/staff.png"
 linkedin: "https://www.linkedin.com/"
 order: 3
+draft: true
 ---

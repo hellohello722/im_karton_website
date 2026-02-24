@@ -12,7 +12,7 @@ if (contact.data.draft) {
 }
 
 const { contact_form_action }: { contact_form_action: string } = config.params;
-const { title, meta_title, description, image, contact_meta } = contact.data;
+const { title, meta_title, description, image } = contact.data;
 ---
 
 <Base
@@ -23,30 +23,9 @@ const { title, meta_title, description, image, contact_meta } = contact.data;
 >
   <PageHeader title={title} />
 
-  <section class="pt-12 xl:pt-24">
-    <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {
-          contact_meta &&
-            contact_meta?.map((contact) => (
-              <div class="p-10 bg-light dark:bg-darkmode-light rounded-md text-center">
-                <p
-                  set:html={markdownify(contact.name)}
-                  class="mb-6 h3 font-medium text-text-dark dark:text-darkmode-text-dark"
-                />
-                <p set:html={markdownify(contact.contact)} />
-              </div>
-            ))
-        }
-      </div>
-    </div>
-  </section>
-
   <section class="section">
     <div class="container">
       <div class="mx-auto lg:col-10">
-        <h2 class="mb-14 text-center">We would love to hear from you!</h2>
-
         <form
           class="border border-border dark:border-darkmode-border rounded-md p-10"
           action={contact_form_action}
@@ -55,55 +34,28 @@ const { title, meta_title, description, image, contact_meta } = contact.data;
           <div class="mb-6 md:grid grid-cols-2 gap-x-8 max-md:space-y-6">
             <div>
               <label for="name" class="form-label">
-                First Name <span class="text-red-500">*</span>
+                お名前（ペンネーム等も可） <span class="text-red-500">*</span>
               </label>
               <input
                 id="name"
                 name="name"
                 class="form-input"
-                placeholder="John"
+                placeholder="お名前"
                 type="text"
                 required
               />
             </div>
 
             <div>
-              <label for="name" class="form-label"> Last Name </label>
-              <input
-                id="name"
-                name="name"
-                class="form-input"
-                placeholder="Doe"
-                type="text"
-              />
-            </div>
-          </div>
-
-          <div class="mb-6 md:grid grid-cols-2 gap-x-8 max-md:space-y-6">
-            <div>
               <label for="email" class="form-label">
-                Email Address <span class="text-red-500">*</span>
+                メールアドレス <span class="text-red-500">*</span>
               </label>
               <input
                 id="email"
                 name="email"
                 class="form-input"
-                placeholder="john.doe@email.com"
+                placeholder="example@email.com"
                 type="email"
-                required
-              />
-            </div>
-
-            <div>
-              <label for="name" class="form-label">
-                Subject <span class="text-red-500">*</span>
-              </label>
-              <input
-                id="name"
-                name="name"
-                class="form-input"
-                placeholder="Enquiry About"
-                type="text"
                 required
               />
             </div>
@@ -111,20 +63,20 @@ const { title, meta_title, description, image, contact_meta } = contact.data;
 
           <div class="mb-6">
             <label for="message" class="form-label">
-              Message <span class="text-red-500">*</span>
+              お問い合わせ内容 <span class="text-red-500">*</span>
             </label>
             <textarea
               id="message"
               name="message"
               class="form-input"
-              placeholder="Type your message..."
+              placeholder="お問い合わせ内容をご記入ください"
               rows={8}
               required></textarea>
           </div>
 
           <div class="flex justify-end">
             <button type="submit" class="btn btn-primary">
-              Send Message
+              送信する
             </button>
           </div>
         </form>

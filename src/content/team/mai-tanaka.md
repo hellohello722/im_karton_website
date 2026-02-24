@@ -5,4 +5,5 @@ bio: "BtoB企業のブランディングとデジタル施策を15年以上支�
 image: "/images/staff/staff.png"
 linkedin: "https://www.linkedin.com/"
 order: 1
+draft: true
 ---

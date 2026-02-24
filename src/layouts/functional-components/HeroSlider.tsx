@@ -2,7 +2,7 @@ import React from "react";
 import type { FC } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 type HeroSlide = {
@@ -34,7 +34,9 @@ const HeroSlider: FC<HeroSliderProps> = ({ slides }) => {
         bulletClass: "banner-pagination-bullet",
         bulletActiveClass: "banner-pagination-bullet-active",
       }}
-      modules={[Pagination]}
+      autoplay={{ delay: 5000, disableOnInteraction: false }}
+      loop={true}
+      modules={[Autoplay, Pagination]}
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={`${slide.title}-${index}`}>
@@ -58,14 +60,18 @@ const HeroSlider: FC<HeroSliderProps> = ({ slides }) => {
                   <h1 className="text-3xl md:text-5xl font-semibold leading-tight mb-6">
                     {slide.title}
                   </h1>
-                  {slide.cta && slide.cta.link && (
+                  {slide.cta && slide.cta.link ? (
                     <a
                       className="btn btn-sm md:btn-lg btn-primary font-medium"
                       href={slide.cta.link}
                     >
                       {slide.cta.label}
                     </a>
-                  )}
+                  ) : slide.cta && slide.cta.label ? (
+                    <span className="btn btn-sm md:btn-lg font-medium bg-white/30 text-white/70 border-white/20 cursor-default">
+                      {slide.cta.label}
+                    </span>
+                  ) : null}
                 </div>
               </div>
             </div>

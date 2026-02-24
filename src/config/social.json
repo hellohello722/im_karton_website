@@ -1,24 +1,14 @@
 {
   "main": [
     {
-      "name": "facebook",
-      "icon": "FaFacebook",
-      "link": "https://www.facebook.com/"
-    },
-    {
       "name": "x",
       "icon": "FaXTwitter",
-      "link": "https://x.com/"
+      "link": "https://x.com/im_karton"
     },
     {
-      "name": "github",
-      "icon": "FaGithub",
-      "link": "https://www.github.com/"
-    },
-    {
-      "name": "linkedin",
-      "icon": "FaLinkedin",
-      "link": "https://www.linkedin.com/"
+      "name": "instagram",
+      "icon": "FaInstagram",
+      "link": "https://www.instagram.com/im.karton/"
     }
   ]
 }
