@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(ls:*)",
+      "Bash(node --version:*)",
+      "Bash(npm --version:*)",
+      "Bash(npm ls:*)",
+      "Bash(yarn install)",
+      "Bash(volta install:*)",
+      "Bash(yarn --version:*)",
+      "Bash(yarn dev)",
+      "Bash(npx astro dev:*)",
+      "Bash(node node_modules/.bin/astro dev:*)",
+      "Bash(node:*)",
+      "Bash(echo:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)"
+    ]
+  }
+}
