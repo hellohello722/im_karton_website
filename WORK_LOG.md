@@ -1,6 +1,6 @@
 # Im Karton Website - 作業ログ
 
-最終更新: 2026-02-24
+最終更新: 2026-02-25
 
 ## プロジェクト概要
 
@@ -101,6 +101,32 @@ SNS:
 - Volta で yarn@1.22.22 をインストール（Yarn 4ではなくClassic）
 - `yarn install` で依存関係を再インストール
 
+### Task 8: reporting.astro / events.astro の実コンテンツ差し替え（セッション3）
+
+#### reporting.astro（レポート記事寄稿）
+**ファイル**: `src/pages/activities/reporting.astro`
+- B2Bテンプレート文を全面書き換え
+- 寄稿先メディア: 4Gamer.net（2024年より記事提供開始）
+- 取材テーマ: イベント現地レポート / アワード・新作情報 / インタビュー・コラム / プレイレポート
+- メンバー別記事一覧（3名、各4Gamer.net記事ページへのリンク付き）:
+  - Omochicard: https://www.4gamer.net/words/016/W01699/
+  - tackman: https://www.4gamer.net/words/017/W01768/
+  - ginrei: https://www.4gamer.net/words/017/W01765/
+- Im Karton共同名義の記事一覧: https://www.4gamer.net/words/017/W01772/
+
+#### events.astro（イベント出展・開催）
+**ファイル**: `src/pages/activities/events.astro`
+- ページタイトルを「その他イベント開催」→「イベント出展・開催」に変更
+- B2Bテンプレート文を全面書き換え、3セクション構成:
+  1. **国内イベント出展**: ゲームマーケット、BGBE、名古屋ボードゲーム楽市、九州ボドカニ、さっぽろ卓ゲッと、ボドコレ仙台（2026年4月）
+  2. **展示コンテンツの制作**: 「世界の大規模アナログゲームイベントマップ」紹介（画像: `/images/events-world-map.jpg`）
+  3. **トークイベントの開催**: Im Karton × GOTTA2「ドイツ行こうぜ～シュピールエッセン行き方講座」（2024年開催・現在休止中）
+
+#### index.astro（トップページ Activitiesカード）
+**ファイル**: `src/pages/index.astro`
+- レポート記事寄稿: 説明文を4Gamer.net寄稿に言及する文に変更
+- イベント出展・開催: タイトルを「その他イベント開催」→「イベント出展・開催」に変更、説明文をゲームマーケット等での出展活動に変更
+
 ---
 
 ## 残タスク（未着手）
@@ -117,6 +143,8 @@ SNS:
   - config.json の `site.favicon` を変更
 - **og-image**: `/images/og-image.png`（テンプレート画像の可能性）
   - config.json の `metadata.meta_image` を変更
+- **イベントマップ画像**: ユーザー提供の写真を `/images/events-world-map.jpg` として配置する必要あり
+  - events.astro の展示コンテンツセクションで参照
 
 ### 3. base_url の変更
 - `src/config/config.json` の `site.base_url` を実際のドメインに変更
@@ -143,8 +171,8 @@ SNS:
 ### 有効なページ
 - `/` - トップページ（ヒーロースライダー + Activities + Events + About Us）
 - `/activities/travel-guide` - 旅行ガイドブック一覧（4冊）
-- `/activities/reporting` - レポート記事寄稿（仮ページ・B2B調テキスト残存）
-- `/activities/events` - イベント開催（仮ページ・B2B調テキスト残存）
+- `/activities/reporting` - レポート記事寄稿（4Gamer.net寄稿実績・メンバー別記事一覧）
+- `/activities/events` - イベント出展・開催（国内出展・展示コンテンツ・トークイベント）
 
 ### 非表示のページ（draft: true / メニュー削除済み）
 - `/about` - About ページ
