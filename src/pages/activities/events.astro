@@ -2,51 +2,103 @@
 import Base from "@/layouts/Base.astro";
 import config from "@/config/config.json";
 const { site } = config;
+
+const domesticEvents = [
+  { name: "ゲームマーケット", area: "東京" },
+  { name: "BGBE（Board Game Business Expo Japan）", area: "大阪" },
+  { name: "名古屋ボードゲーム楽市", area: "名古屋" },
+  { name: "九州ボドカニ", area: "九州" },
+  { name: "さっぽろ卓ゲッと", area: "札幌" },
+  { name: "ボドコレ仙台", area: "仙台", note: "2026年4月開催" },
+];
 ---
 
-<Base title={`その他イベント開催 | ${site.title}`}>
+<Base title={`イベント出展・開催 | ${site.title}`}>
   <section class="section">
-    <div class="container max-w-4xl space-y-8">
-      <p class="text-sm uppercase tracking-[0.3em] text-primary/80">Activities</p>
-      <h1 class="text-3xl md:text-4xl font-semibold">その他イベント開催</h1>
-      <p class="text-lg text-text-light dark:text-darkmode-text-light leading-relaxed">
-        ボードゲームを中心としたコミュニティづくりのために、プレイ会や交流会、ワークショップなどの自主企画イベントを実施しています。参加者同士のネットワーキングを促進し、新しいコラボレーションの場を生み出します。
-      </p>
+    <div class="container max-w-4xl space-y-10">
+      <div class="space-y-4">
+        <p class="text-sm uppercase tracking-[0.3em] text-primary/80">Activities</p>
+        <h1 class="text-3xl md:text-4xl font-semibold">イベント出展・開催</h1>
+        <p class="text-lg text-text-light dark:text-darkmode-text-light leading-relaxed">
+          Im Kartonでは、ゲームマーケットをはじめとする日本各地のボードゲームイベントに出展し、海外アナログゲームイベントの魅力を伝える活動を行っています。ガイドブックの頒布に加え、展示コンテンツの制作やトークイベントの開催など、「海外イベントに行ってみたい！」と思う人を増やすための取り組みを続けています。
+        </p>
+      </div>
 
-      <section class="space-y-3">
-        <h2 class="text-2xl font-semibold text-primary">開催しているプログラム例</h2>
-        <div class="grid gap-4 md:grid-cols-2">
-          <article class="rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm">
-            <h3 class="text-lg font-semibold">プレイ会 &amp; 試遊会</h3>
-            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
-              新作や海外タイトルを体験できるプレイ会を定期開催。インストラクターが常駐し、初心者でも安心して参加できます。
-            </p>
-          </article>
-          <article class="rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm">
-            <h3 class="text-lg font-semibold">クリエイター・交流ミートアップ</h3>
-            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
-              デザイナーやパブリッシャーが新作のプロトタイプを披露し、フィードバックを得られる場を提供しています。
-            </p>
-          </article>
+      <!-- 国内イベント出展 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-semibold text-primary">国内イベント出展</h2>
+        <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+          ゲームマーケットやBGBEなどを中心に、日本各地のボードゲーム・アナログゲームイベントに出展しています。ブースではガイドブックの頒布や海外イベント情報の発信を行っています。
+        </p>
+        <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+          {domesticEvents.map((event) => (
+            <div class="rounded-xl border border-border/60 dark:border-border/30 bg-white dark:bg-darkmode-body p-4 shadow-sm">
+              <p class="font-semibold text-sm">{event.name}</p>
+              <div class="mt-1.5 flex flex-wrap items-center gap-2">
+                <span class="inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                  {event.area}
+                </span>
+                {event.note && (
+                  <span class="text-xs text-text-light dark:text-darkmode-text-light">
+                    {event.note}
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section class="space-y-3">
-        <h2 class="text-2xl font-semibold text-primary">イベント運営の特徴</h2>
-        <ul class="list-disc pl-6 space-y-2 text-text-light dark:text-darkmode-text-light leading-relaxed">
-          <li>目的に合わせた会場選定と運営ディレクション</li>
-          <li>参加者募集・チケット販売・当日の受付まで一気通貫でサポート</li>
-          <li>アンケート分析やアーカイブ制作など、次回に活かせる振り返りレポートを提供</li>
-        </ul>
+      <!-- 展示コンテンツ制作 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-semibold text-primary">展示コンテンツの制作</h2>
+        <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+          海外アナログゲームイベントに興味がある方に向けて、ブース展示用のオリジナルコンテンツを制作しています。「海外にもこんなに大きなイベントがあるんだ！」と知ってもらうきっかけづくりを目指しています。
+        </p>
+        <div class="rounded-2xl border border-border/60 dark:border-border/30 bg-white dark:bg-darkmode-body shadow-sm overflow-hidden">
+          <div class="aspect-video w-full overflow-hidden bg-light dark:bg-darkmode-light/60">
+            <img
+              src="/images/events-world-map.jpg"
+              alt="世界の大規模アナログゲームイベントマップ by Im Karton"
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-5 space-y-2">
+            <h3 class="text-lg font-semibold">世界の大規模アナログゲームイベントマップ</h3>
+            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+              来場者1万人を超える世界各地のアナログゲームイベントを一覧できるマップ。SPIEL Essen、Gen Con、FIJ Cannesをはじめ、アジア・南米のイベントまで網羅しています。BGBEなどのイベント会場で展示し、多くの方にご覧いただきました。
+            </p>
+          </div>
+        </div>
       </section>
 
-      <section class="space-y-3">
-        <h2 class="text-2xl font-semibold text-primary">開催までの流れ</h2>
-        <ol class="list-decimal pl-6 space-y-2 text-text-light dark:text-darkmode-text-light leading-relaxed">
-          <li>企画テーマ・ターゲット・開催規模の擦り合わせ</li>
-          <li>進行スケジュールの策定と告知・集客開始</li>
-          <li>会場運営・司会進行・アフターフォローまでサポート</li>
-        </ol>
+      <!-- トークイベント開催 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-semibold text-primary">トークイベントの開催</h2>
+        <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+          海外アナログゲームイベントに「実際に行きたい！」という方に向けて、より詳しい現地情報や渡航のノウハウをお伝えするトークイベントを開催しています。
+        </p>
+        <article class="rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
+              </svg>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-lg font-semibold">
+                Im Karton × GOTTA2「ドイツ行こうぜ～シュピールエッセン行き方講座」
+              </h3>
+              <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+                GOTTA2との共催で開催したトークイベント。ドイツ・エッセンへの渡航方法や現地での過ごし方、会場の回り方など、実体験にもとづく具体的な情報を質疑応答形式でお伝えしました。2024年度に開催し、現在は休止中です。
+              </p>
+              <span class="inline-block rounded-full bg-amber-100 dark:bg-amber-900/30 px-3 py-1 text-xs font-medium text-amber-700 dark:text-amber-400">
+                現在休止中
+              </span>
+            </div>
+          </div>
+        </article>
       </section>
 
     </div>

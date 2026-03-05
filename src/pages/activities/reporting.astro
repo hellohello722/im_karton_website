@@ -2,6 +2,27 @@
 import Base from "@/layouts/Base.astro";
 import config from "@/config/config.json";
 const { site } = config;
+
+const members = [
+  {
+    name: "Omochicard",
+    url: "https://www.4gamer.net/words/016/W01699/",
+    description:
+      "SPIEL Essen、Gen Con、FIJなど世界各地の大型コンベンションを幅広くカバー。会場の雰囲気からアワード情報まで、現地の空気感を伝えるレポートを執筆。",
+  },
+  {
+    name: "tackman",
+    url: "https://www.4gamer.net/words/017/W01768/",
+    description:
+      "重量級ゲームの紹介や海外イベントの深掘り取材を得意とするメンバー。台湾やアメリカなどの展示即売会レポートのほか、ゲーム業界関係者へのインタビュー記事も手がける。",
+  },
+  {
+    name: "ginrei",
+    url: "https://www.4gamer.net/words/017/W01765/",
+    description:
+      "北米最大のアナログゲームイベントGen Conの現地レポートなどを執筆。イベント会場のお祭り感や街の様子を伝える臨場感あるスタイルが特徴。",
+  },
+];
 ---
 
 <Base title={`レポート記事寄稿 | ${site.title}`}>
@@ -10,44 +31,98 @@ const { site } = config;
       <p class="text-sm uppercase tracking-[0.3em] text-primary/80">Activities</p>
       <h1 class="text-3xl md:text-4xl font-semibold">レポート記事寄稿</h1>
       <p class="text-lg text-text-light dark:text-darkmode-text-light leading-relaxed">
-        国内外のアナログゲームイベントやコミュニティを取材し、熱量とビジネスの両面を伝えるレポート記事を制作します。現地取材・写真撮影・編集を一括で請け負い、ブランドストーリーに沿ったコミュニケーションを構築します。
+        Im Kartonでは、海外アナログゲームイベントの現地取材にもとづくレポート記事をゲームメディアに寄稿しています。会場の熱気や新作情報、現地でしかわからないリアルな空気感を、日本のボードゲームファンや業界関係者に届けることを目指しています。
       </p>
 
-      <section class="space-y-3">
-        <h2 class="text-2xl font-semibold text-primary">制作のポイント</h2>
-        <ul class="list-disc pl-6 space-y-2 text-text-light dark:text-darkmode-text-light leading-relaxed">
-          <li>現地取材チームによるインタビュー・フォトレポート</li>
-          <li>専門用語の翻訳と文脈理解を踏まえたライティング</li>
-          <li>オウンドメディア / note / プレスリリースなど媒体別に最適化した構成</li>
-          <li>イベント後のSNS展開や資料化に活用できる素材データの提供</li>
-        </ul>
+      <section class="space-y-4">
+        <h2 class="text-2xl font-semibold text-primary">寄稿先メディア</h2>
+        <a
+          href="https://www.4gamer.net/words/017/W01772/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-4 rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm transition hover:shadow-md hover:-translate-y-0.5"
+        >
+          <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary font-bold text-lg">
+            4G
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold">4Gamer.net</h3>
+            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+              2024年よりIm Kartonとして記事提供を開始。SPIEL Essen・Gen Con・FIJをはじめとする海外イベントの現地レポートやインタビュー記事などを寄稿しています。
+            </p>
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="ml-auto h-5 w-5 shrink-0 text-primary"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+          </svg>
+        </a>
       </section>
 
-      <section class="space-y-3">
-        <h2 class="text-2xl font-semibold text-primary">活用シーン</h2>
-        <div class="grid gap-4 md:grid-cols-2">
-          <article class="rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm">
-            <h3 class="text-lg font-semibold">イベント公式レポート</h3>
-            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
-              主催者向けに、来場者の声や新作発表のポイントを整理した公式レポートを制作。スポンサー報告資料としても活用されています。
-            </p>
-          </article>
-          <article class="rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm">
-            <h3 class="text-lg font-semibold">企業PR・採用記事</h3>
-            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
-              出展企業の背景やプロジェクトストーリーを掘り下げ、ブランドの価値を伝える記事を制作します。
-            </p>
-          </article>
+      <section class="space-y-4">
+        <h2 class="text-2xl font-semibold text-primary">取材テーマ</h2>
+        <div class="grid gap-3 sm:grid-cols-2">
+          <div class="rounded-xl bg-light dark:bg-darkmode-light/60 p-4">
+            <p class="font-semibold text-sm">🎲 イベント現地レポート</p>
+            <p class="text-xs text-text-light dark:text-darkmode-text-light mt-1">世界各国のアナログゲームイベントの会場レポート</p>
+          </div>
+          <div class="rounded-xl bg-light dark:bg-darkmode-light/60 p-4">
+            <p class="font-semibold text-sm">🏆 アワード・新作情報</p>
+            <p class="text-xs text-text-light dark:text-darkmode-text-light mt-1">各賞の受賞作や注目の新作タイトルの紹介</p>
+          </div>
+          <div class="rounded-xl bg-light dark:bg-darkmode-light/60 p-4">
+            <p class="font-semibold text-sm">🎤 インタビュー・コラム</p>
+            <p class="text-xs text-text-light dark:text-darkmode-text-light mt-1">業界関係者やデザイナーへのインタビュー記事</p>
+          </div>
+          <div class="rounded-xl bg-light dark:bg-darkmode-light/60 p-4">
+            <p class="font-semibold text-sm">🕹️ プレイレポート</p>
+            <p class="text-xs text-text-light dark:text-darkmode-text-light mt-1">イベント会場で体験した注目タイトルの試遊レポート</p>
+          </div>
         </div>
       </section>
 
-      <section class="space-y-3">
-        <h2 class="text-2xl font-semibold text-primary">制作フロー</h2>
-        <ol class="list-decimal pl-6 space-y-2 text-text-light dark:text-darkmode-text-light leading-relaxed">
-          <li>発信したいテーマとターゲットのヒアリング</li>
-          <li>取材企画・シナリオ設計、現地での取材・撮影</li>
-          <li>記事執筆・編集・校正、納品後の運用アドバイス</li>
-        </ol>
+      <section class="space-y-4">
+        <h2 class="text-2xl font-semibold text-primary">メンバー別 記事一覧</h2>
+        <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+          各メンバーの4Gamer.net記事一覧ページへリンクしています。
+        </p>
+        <div class="grid gap-4 md:grid-cols-3">
+          {members.map((member) => (
+            <a
+              href={member.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm transition hover:shadow-md hover:-translate-y-0.5"
+            >
+              <h3 class="text-lg font-semibold group-hover:text-primary transition-colors">
+                {member.name}
+              </h3>
+              <p class="mt-2 text-xs text-text-light dark:text-darkmode-text-light leading-relaxed">
+                {member.description}
+              </p>
+              <span class="mt-3 inline-flex items-center text-xs font-medium text-primary">
+                記事一覧を見る
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="ml-1 h-3.5 w-3.5 transition group-hover:translate-x-1"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
       </section>
 
     </div>
