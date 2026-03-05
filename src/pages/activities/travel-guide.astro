@@ -2,128 +2,114 @@
 import Base from "@/layouts/Base.astro";
 import config from "@/config/config.json";
 const { site } = config;
+
+const boothBannerUrl = "https://asset.booth.pm/static-images/banner/200x40_01.png";
+
+const books = [
+  {
+    id: "essen-spiel-2023",
+    title: "Essen SPIEL Guidebook 2023",
+    image: "/images/books/Essen_Spiel_Guidebook_2023.jpg",
+    alt: "Essen SPIEL ガイドブック",
+    boothUrl: "https://imkarton.booth.pm/items/4767409",
+    description:
+      "世界最大のボードゲームイベント「SPIEL Essen」への参加を検討している方に向けた、一般参加者目線の実践ガイドブック。イベントの基礎知識からドイツへの渡航方法、予算の節約術まで幅広くカバーしています。",
+    features: [
+      "多数の新作から優良作を見つけるメソッド",
+      "ボードゲームの持ち帰り・発送に関する節約術",
+      "エッセン前後のドイツ観光情報",
+    ],
+  },
+  {
+    id: "gen-con",
+    title: "Gen Con Guidebook",
+    image: "/images/books/GenCon_Guidebook.jpg",
+    alt: "Gen Con ガイドブック",
+    boothUrl: "https://imkarton.booth.pm/items/6283498",
+    description:
+      "北米最大のアナログゲームイベント「Gen Con」の旅行ガイドブック。シリーズ第2弾として、アメリカならではのイベント事情を128ページのフルカラーで紹介しています。",
+    features: [
+      "アメリカのイベント事情（ホテルやスタジアムも会場に）",
+      "旅行計画の立て方と持参アイテムリスト",
+      "ボードゲームの効率的な運び方と参加型イベント紹介",
+    ],
+  },
+  {
+    id: "essen-spiel-2023-plus-one",
+    title: "Essen SPIEL Guidebook 2023 Plus One",
+    image: "/images/books/Essen_Spiel_Guidebook%202023_Plus_One.jpg",
+    alt: "Essen SPIEL Guidebook 2023 Plus One",
+    boothUrl: "https://imkarton.booth.pm/items/7955335",
+    description:
+      "リニューアルされた「SPIEL Essen」の最新情報を48ページのフルカラーで追補した別冊。前作と合わせて読むことで、新しくなったエッセンの姿をより詳しく知ることができます。",
+    features: [
+      "見やすくなったSPIEL Essenの新レイアウト情報",
+      "旅行時のお得情報やトラブル対応のポイント",
+      "ドイツ鉄道運休トラブルの体験記",
+    ],
+  },
+  {
+    id: "fij-cannes",
+    title: "FIJ Cannes Guidebook",
+    image: "/images/books/FIJ_Cannes_Guidebook.png",
+    alt: "FIJ カンヌ ガイドブック",
+    boothUrl: "https://imkarton.booth.pm/items/7721176",
+    description:
+      "フランス最大・世界第3位のアナログゲームイベント「Festival International des Jeux」のガイドブック。シリーズ第3弾にして過去最大の138ページ。イベント紹介から旅行テクニック、カンヌの観光情報まで網羅しています。",
+    features: [
+      "FIJ（Festival International des Jeux）のイベント紹介",
+      "フランス旅行のテクニックと実践情報",
+      "カンヌの観光地情報と現地ガイダンス",
+    ],
+  },
+];
 ---
 
-<Base title={`海外アナログゲームイベント旅行ガイド | ${site.title}`}>
+<Base title={`海外アナログゲームイベント旅行ガイドブック | ${site.title}`}>
   <section class="section">
     <div class="container max-w-4xl space-y-8">
-      <p class="text-sm uppercase tracking-[0.3em] text-primary/80">Activities</p>
-      <h1 class="text-3xl md:text-4xl font-semibold">海外アナログゲームイベント旅行ガイド</h1>
+      <p class="text-sm uppercase tracking-[0.3em] text-primary/80">Books</p>
+      <h1 class="text-3xl md:text-4xl font-semibold">海外アナログゲームイベント旅行ガイドブック</h1>
       <p class="text-lg text-text-light dark:text-darkmode-text-light leading-relaxed">
         海外のアナログゲームイベントを訪れる人に向けたガイドブックシリーズを制作・刊行しています。現地取材で得た最新情報と、ブース巡りや周辺観光を楽しむための実践的なノウハウを凝縮しました。
       </p>
 
-      <div class="grid gap-6 md:grid-cols-2">
-        <article id="essen-spiel-2023" class="rounded-3xl border border-border/60 dark:border-border/30 bg-white dark:bg-darkmode-body shadow-sm overflow-hidden">
-          <img
-            src="/images/books/Essen_Spiel_Guidebook_2023.jpg"
-            alt="Essen SPIEL ガイドブック"
-            class="h-64 w-full object-cover"
-            loading="lazy"
-          />
-          <div class="p-6 space-y-3">
-            <h2 class="text-2xl font-semibold text-primary">Essen SPIEL Guidebook 2023</h2>
-            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
-              ドイツ・エッセンで開催される世界最大級のボードゲームフェアを徹底解説。ホール構成、注目ブース、限定アイテムの購入方法のほか、滞在中に便利な交通・食事情報を掲載しています。
-            </p>
-            <ul class="list-disc pl-5 text-sm text-text-light dark:text-darkmode-text-light space-y-1">
-              <li>新作ボードゲームカタログとサイン会スケジュール</li>
-              <li>持ち帰り用梱包ガイド、荷物発送サービスの活用法</li>
-              <li>現地ボードゲームカフェ・ショップ紹介</li>
-            </ul>
-          </div>
-        </article>
-
-        <article id="gen-con" class="rounded-3xl border border-border/60 dark:border-border/30 bg-white dark:bg-darkmode-body shadow-sm overflow-hidden">
-          <img
-            src="/images/books/GenCon_Guidebook.jpg"
-            alt="Gen Con ガイドブック"
-            class="h-64 w-full object-cover"
-            loading="lazy"
-          />
-          <div class="p-6 space-y-3">
-            <h2 class="text-2xl font-semibold text-primary">Gen Con Travel Companion</h2>
-            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
-              インディアナポリスで開催される北米最大のアナログゲームイベントを取材。巨大会場の歩き方や、コミュニティイベントの選び方、パートナー開拓のポイントを収録しています。
-            </p>
-            <ul class="list-disc pl-5 text-sm text-text-light dark:text-darkmode-text-light space-y-1">
-              <li>500以上のイベントプログラムから目的別にセレクト</li>
-              <li>現地クリエイターへのインタビュー記事</li>
-              <li>アフターイベントや観光情報を含む滞在モデルプラン</li>
-            </ul>
-          </div>
-        </article>
-
-        <article id="essen-spiel-2023-plus-one" class="rounded-3xl border border-border/60 dark:border-border/30 bg-white dark:bg-darkmode-body shadow-sm overflow-hidden">
-          <img
-            src="/images/books/Essen_Spiel_Guidebook%202023_Plus_One.jpg"
-            alt="Essen SPIEL Guidebook 2023 Plus One"
-            class="h-64 w-full object-cover"
-            loading="lazy"
-          />
-          <div class="p-6 space-y-3">
-            <h2 class="text-2xl font-semibold text-primary">Essen SPIEL Guidebook 2023 Plus One</h2>
-            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
-              エッセンSPIEL 2023の取材で収録しきれなかった情報を追補した特別版。本編と合わせて読むことで、エッセン滞在の楽しみをさらに広げることができます。
-            </p>
-            <ul class="list-disc pl-5 text-sm text-text-light dark:text-darkmode-text-light space-y-1">
-              <li>本編未収録のブース・メーカーレポート</li>
-              <li>取材後記と会場外イベントの詳細</li>
-              <li>次回開催に向けたプレビュー情報</li>
-            </ul>
-          </div>
-        </article>
-
-        <article id="fij-cannes" class="rounded-3xl border border-border/60 dark:border-border/30 bg-white dark:bg-darkmode-body shadow-sm overflow-hidden">
-          <img
-            src="/images/books/FIJ_Cannes_Guidebook.png"
-            alt="FIJ カンヌ ガイドブック"
-            class="h-64 w-full object-cover"
-            loading="lazy"
-          />
-          <div class="p-6 space-y-3">
-            <h2 class="text-2xl font-semibold text-primary">FIJ Cannes Guidebook</h2>
-            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
-              フランス・カンヌで開催される国際ゲームフェスティバル（FIJ）の取材ガイドブック。ヨーロッパのボードゲームシーンを体感したい方に向けた現地密着レポートです。
-            </p>
-            <ul class="list-disc pl-5 text-sm text-text-light dark:text-darkmode-text-light space-y-1">
-              <li>カンヌ会場のホール構成と注目展示ブース</li>
-              <li>フランス語コミュニケーション支援フレーズ集</li>
-              <li>カンヌ観光情報と周辺ゲームショップガイド</li>
-            </ul>
-          </div>
-        </article>
+      <div class="space-y-6">
+        {books.map((book) => (
+          <article id={book.id} class="flex flex-col sm:flex-row rounded-3xl border border-border/60 dark:border-border/30 bg-white dark:bg-darkmode-body shadow-sm overflow-hidden">
+            <div class="sm:w-48 md:w-56 shrink-0 bg-light dark:bg-darkmode-light/60 flex items-center justify-center p-4">
+              <img
+                src={book.image}
+                alt={book.alt}
+                class="max-h-72 w-auto object-contain rounded-lg shadow-md"
+                loading="lazy"
+              />
+            </div>
+            <div class="flex flex-col flex-1 p-6 space-y-3">
+              <h2 class="text-xl md:text-2xl font-semibold text-primary">{book.title}</h2>
+              <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
+                {book.description}
+              </p>
+              <ul class="list-disc pl-5 text-sm text-text-light dark:text-darkmode-text-light space-y-1">
+                {book.features.map((feature) => (
+                  <li>{feature}</li>
+                ))}
+              </ul>
+              <div class="pt-2 mt-auto">
+                <a href={book.boothUrl} target="_blank" rel="noopener noreferrer">
+                  <img
+                    src={boothBannerUrl}
+                    alt="BOOTHで購入"
+                    width="200"
+                    height="40"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
-
-      <section class="space-y-4">
-        <h2 class="text-2xl font-semibold text-primary">シリーズの特徴</h2>
-        <div class="grid gap-4 md:grid-cols-2">
-          <article class="rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm">
-            <h3 class="text-lg font-semibold">現地密着の取材</h3>
-            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
-              現地ライターが会期中に取材を行い、会場の雰囲気を写真と共にレポート。混雑状況や待機列対策などリアルな情報を掲載します。
-            </p>
-          </article>
-          <article class="rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm">
-            <h3 class="text-lg font-semibold">旅の実用ガイド</h3>
-            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
-              航空券・ホテルの選び方、会場アクセス、飲食・観光スポットなど、渡航者が知りたい情報をまとめています。
-            </p>
-          </article>
-          <article class="rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm">
-            <h3 class="text-lg font-semibold">言語サポート</h3>
-            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
-              ブースで使える会話フレーズや、販売スタッフとのやりとりに便利なチェックリストを付属。初めて海外イベントに参加する方を支援します。
-            </p>
-          </article>
-          <article class="rounded-2xl border border-border/60 dark:border-border/30 p-5 bg-white dark:bg-darkmode-body shadow-sm">
-            <h3 class="text-lg font-semibold">デジタル版 / 紙版</h3>
-            <p class="text-sm text-text-light dark:text-darkmode-text-light leading-relaxed">
-              電子版はアップデート情報を随時配信。紙版は書店・イベント会場・オンラインストアで頒布しています。
-            </p>
-          </article>
-        </div>
-      </section>
 
     </div>
   </section>

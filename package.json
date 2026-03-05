@@ -12,7 +12,8 @@
     "preview": "astro preview",
     "format": "prettier -w ./src",
     "check": "astro check",
-    "remove-darkmode": "node scripts/removeDarkmode.js && yarn format"
+    "remove-darkmode": "node scripts/removeDarkmode.js && yarn format",
+    "test": "vitest run"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
@@ -59,6 +60,7 @@
     "prettier-plugin-tailwindcss": "^0.7.1",
     "tailwind-bootstrap-grid": "^6.0.0",
     "tailwindcss": "^4.1.17",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   }
 }
