@@ -1,10 +1,10 @@
 {
   "site": {
     "title": "Im Karton",
-    "base_url": "https://www.im-karton.jp/",
+    "base_url": "https://www.imkarton.net/",
     "base_path": "/",
     "trailing_slash": false,
-    "favicon": "/images/favicon.png",
+    "favicon": "/images/favicon.jpg",
     "logo": "/images/im_Karton_logo.png",
     "logo_darkmode": "/images/im_Karton_logo.png",
     "logo_width": "180",
@@ -33,7 +33,7 @@
 
   "metadata": {
     "meta_author": "Im Karton Inc.",
-    "meta_image": "/images/og-image.png",
+    "meta_image": "/images/og-image.jpg",
     "meta_description": "海外アナログゲームイベントを訪ねて旅する3人組、Im Karton。SPIEL Essen・Gen Con・FIJなどの旅行ガイドブックを制作しています。"
   },
 
@@ -54,8 +54,8 @@
         "title": "Essen Spiel Guidebook 2023",
         "description": "出展者・参加者に大好評！世界最大のボードゲームイベントと言われるドイツの「エッセン」ことSPIEL Essen。本書ではその魅力や旅の手配、現地で役立つ便利な工夫などを紹介しています。",
         "image": {
-          "src": "/images/IMG_6265.jpeg",
-          "alt": "モナコ港の夕景"
+          "src": "/images/hero_slider_SPIEL_Essen.jpg",
+          "alt": "SPIEL Essen会場の様子"
         },
         "cta": {
           "label": "詳しく見る",
@@ -66,8 +66,8 @@
         "title": "【新刊】FIJ Cannes Guidebook",
         "description": "フランスにもこんなイベントが！？　宮野華也さんのアスドール受賞やJapanパビリオンの出展により注目集まるフランス・FIJのガイドブック、できました。世界第3位イベントの情報をしっかりと紹介する特大ボリュームの一冊。",
         "image": {
-          "src": "/images/IMG_6265.jpeg",
-          "alt": "港の夜景"
+          "src": "/images/hero_slider_FIJ.jpg",
+          "alt": "FIJ Cannes会場の様子"
         },
         "cta": {
           "label": "詳しく見る",
@@ -78,8 +78,8 @@
         "title": "note『月刊Im Karton』",
         "description": "ご要望に応えて現在準備中！海外イベントの「今」を知りたい方へ、チケット販売の開始情報や航空券、その他便利な状況を月1回配信します。乞うご期待",
         "image": {
-          "src": "/images/IMG_6265.jpeg",
-          "alt": "港を望む全景"
+          "src": "/images/hero_slider_note.jpg",
+          "alt": "月刊Im Karton"
         },
         "cta": {
           "label": "準備中",

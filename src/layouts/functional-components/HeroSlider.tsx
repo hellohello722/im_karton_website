@@ -47,11 +47,9 @@ const HeroSlider: FC<HeroSliderProps> = ({ slides }) => {
               className="absolute inset-0 h-full w-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/55 to-black/10"></div>
-
             <div className="relative w-full">
               <div className="container">
-                <div className="max-w-2xl py-16 md:py-24 text-white">
+                <div className="max-w-2xl py-16 md:py-24 text-white" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.3)" }}>
                   {slide.description && (
                     <p className="mb-4 text-base md:text-lg text-white/90">
                       {slide.description}

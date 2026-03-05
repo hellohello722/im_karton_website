@@ -1,60 +1,41 @@
 ---
-title: "Privacy Policy"
-meta_title: ""
-description: "this is meta description"
+title: "プライバシーポリシー"
+meta_title: "プライバシーポリシー | Im Karton"
+description: "Im Karton（イム・カートン）のプライバシーポリシーです。"
 image: ""
 draft: false
 ---
 
-## This Privacy policy was published on 04 May 2023
+最終更新日：2026年2月26日
 
-### GDPR Compliance
+Im Karton（以下「当グループ」）は、本ウェブサイト（https://www.imkarton.net/ 、以下「本サイト」）におけるお客様の個人情報の取り扱いについて、以下のとおりプライバシーポリシーを定めます。
 
-We collect certain identifying personal data when you sign up to our Service such as your name, email address, PayPal address (if different from email address), and telephone number. The personal data we collect from you is disclosed only in accordance with our Terms of Service and/or this Privacy Policy.Conclude collects Slack account and access information from Users for the purposes of connecting to the Slack API and to authenticate access to information on the Conclude website. Whenever you visit our Site, we may
+### 1. 個人情報の収集について
 
-collect non-identifying information from you, such as referring URL, browser, operating system, cookie information, and Internet Service Provider. Without a subpoena, voluntary compliance on the part of your Internet Service Provider, or additional records from a third party, this information alone cannot usually be used to identify you.The term "personal data" does not include any anonymized and aggregated data made on the basis of personal data, which are wholly owned by Conclude.
-<br/>
+本サイトでは、お問い合わせフォーム等を通じてお名前やメールアドレス等の個人情報をご提供いただく場合があります。これらの情報は、お問い合わせへの回答やご連絡のために利用し、それ以外の目的には使用いたしません。
 
-### About Storeplate
+### 2. アクセス解析ツールについて
 
-#### Service Provided As
+本サイトでは、Googleが提供するアクセス解析ツール「Google Analytics」を利用する場合があります。Google Analyticsはトラフィックデータの収集のためにCookieを使用しています。このトラフィックデータは匿名で収集されており、個人を特定するものではありません。
 
-The discovery was made by Richard McClintock , a professor of Latin at Hampden-Sydney College in Virginia, who faced the impetuous recurrence of the dark word consectetur in the text Lorem ipsum researched its origins to identify them in sections 1.10.32 and 1.10.33 of the aforementioned Cicero's
+この機能はCookieを無効にすることで収集を拒否できますので、お使いのブラウザの設定をご確認ください。Google Analyticsの利用規約については、[Google アナリティクス利用規約](https://marketingplatform.google.com/about/analytics/terms/jp/)をご参照ください。
 
-When referring to Lorem ipsum, different expressions are used, namely fill text , fictitious text , blind text or placeholder text : in short, its meaning can also be zero, but its usefulness is so clear as to go
-<br/>
+### 3. Cookieの使用について
 
-#### Company Liability
+本サイトでは、サイトの利便性向上やアクセス状況の把握のためにCookieを使用する場合があります。ブラウザの設定でCookieを無効にすることが可能ですが、一部の機能が正常に動作しなくなる場合があります。
 
-The choice of font and font size with which Lorem ipsum is reproduced answers to specific needs that go beyond the simple and simple filling of spaces dedicated to accepting real texts and allowing to have hands an advertising/publishing product, both web and paper, true to reality.
+### 4. 第三者への提供
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-<br/>
+当グループは、法令に基づく場合を除き、お客様の個人情報を事前の同意なく第三者に提供することはありません。
 
-#### When we collect personal data about you
+### 5. 免責事項
 
-In order to use our Service, you must meet a number of conditions, including but not limited to:
+本サイトからリンクやバナーなどによって他のサイトに移動された場合、移動先サイトで提供される情報やサービス等について当グループは一切の責任を負いません。
 
-- Enhance or improve User experience, our Site, or our Service.
-- Send emails and updates about Conclude, Process transactions.
-- Send emails about our Site or respond to inquiries.
-- Including news and requests for agreement to amended legal documents such as this
-  Privacy Policy and our Terms of Service.
-  <br/>
+### 6. プライバシーポリシーの変更
 
-#### Why we collect and use personal data
+当グループは、必要に応じて本ポリシーの内容を変更することがあります。変更後のプライバシーポリシーは、本サイトに掲載した時点で効力を生じるものとします。
 
-Users of Conclude (i) must keep passwords secure and confidential; (ii) are solely responsible for User Data and all activity in their account while using the Service; (iii) must use commercially reasonable efforts access to their account, and notify Conclude promptly
+### 7. お問い合わせ
 
-- Enhance or improve User experience, our Site, or our Service.
-- Send emails and updates about Conclude, Process transactions.
-- Send emails about our Site or respond to inquiries.
-- Including news and requests for agreement to amended legal documents such as this
-  Privacy Policy and our Terms of Service.
-  <br/>
-
-#### Type of personal data collected
-
-Your information may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the privacy laws may not be as protective as those in your jurisdiction. If you choose to provide information to us, Conclude transfers Personal Information to Google Cloud Platform and processes it there. Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.
-
-Your information may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the privacy laws may not be as protective as those in your jurisdiction. If you choose to provide information to us, Conclude transfers Personal Information to Google Cloud Platform and processes it there. Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.
+本ポリシーに関するお問い合わせは、当グループのSNSアカウントよりご連絡ください。

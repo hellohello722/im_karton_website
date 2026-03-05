@@ -1,98 +1,52 @@
 ---
-title: "Terms of Service"
-meta_title: ""
-description: "this is meta description"
+title: "利用規約"
+meta_title: "利用規約 | Im Karton"
+description: "Im Karton（イム・カートン）ウェブサイトの利用規約です。"
 image: ""
 draft: false
 ---
 
-## Storeplate Solutions License Agreement
+最終更新日：2026年2月26日
 
-Your Rights Roxboro Lighting Limited trading as Onlinelightshop is a UK based company and complies with UK consumer law including the Distance Selling Regulations. This means that shopping with Onlinelightshop is safe. With 30 years experience in lighting retailing we aim to give a thorough and reliable service, you’ll get your items delivered and we’ll sort out any problems you have. Our Terms and Conditions do not affect your statutory rights. Distance Selling Regulations give you the right to cancel an order and return any goods that may already have been dispatched, (see Returns for Refund) up to 7 days from receipt. Our returns policy allows 21 days.
+この利用規約（以下「本規約」）は、Im Karton（以下「当グループ」）が運営するウェブサイト（https://www.imkarton.net/ 、以下「本サイト」）の利用条件を定めるものです。本サイトをご利用いただく際には、本規約に同意いただいたものとみなします。
 
-##### [Download our Returns Form here.](#http://localhost:4321/terms-services)
+### 1. サイトの目的
 
-<br/>
+本サイトは、当グループの活動紹介および制作物（ガイドブック等）の情報提供を目的として運営しています。
 
-### Sales terms and conditions
+### 2. 知的財産権
 
-#### Pricing
+本サイトに掲載されているテキスト、画像、ロゴ、デザインその他のコンテンツに関する著作権およびその他の知的財産権は、当グループまたは正当な権利者に帰属します。私的利用の範囲を超えた無断転載・複製・再配布を禁じます。
 
-Prices include VAT (Value Added Tax)\*, standard UK rate 20%. VAT does not apply to orders that are to be shipped outside the E.U. or to Tax Free areas such as the Channel Islands. These areas will be priced and billed with VAT deducted. The prices on the site are shown including VAT.
+### 3. 禁止事項
 
-If you select a currency or a delivery country outside the E.U., prices will be displayed VAT free, for example, an item which costs 19.99 GBP will be shown and billed as 17.00 GBP when it is VAT free.
+本サイトの利用にあたり、以下の行為を禁止します。
 
-While we do our best to ensure prices are up to date and correct, errors may occur and in this case you will be contacted before your order is shipped.
-<br/>
+- 当グループまたは第三者の権利を侵害する行為
+- 本サイトの運営を妨害する行為
+- 本サイトのコンテンツを無断で商業利用する行為
+- その他、当グループが不適切と判断する行為
 
-#### Payment
+### 4. 外部リンク
 
-Onlinelightshop accept most major credit cards for online orders. You will be asked to enter your card details and the name and the address of the card holder when you place the order. These details will be checked and we may hold an order until we receive the correct details. You will be contacted if we find the card or address details to be incorrect. We only bill your card when your order is ready to be dispatched.
+本サイトには外部サイトへのリンクが含まれる場合があります。リンク先のサイトは当グループの管理下にはなく、その内容やサービスについて当グループは一切の責任を負いません。
 
-For offline orders Onlinelightshop accept (£) Sterling Postal Orders, Personal Cheques, (£) Sterling Bank Drafts and (£) Sterling Bank Transfers. We recommend that you do not send cash through the post. Due to varying Exchange Rates all payments made to CRC must be in UK Pounds (£) Sterling.
-<br/>
+### 5. 商品の販売について
 
-#### Product Availability
+本サイトで紹介するガイドブック等の商品は、外部サービス（BOOTH等）を通じて販売しています。商品の購入に関する利用規約は各販売プラットフォームの規約に従います。
 
-Onlinelightshop endeavours to carry most of the items displayed on the site in stock. If an item you order is out of stock we will contact you with a due date. You may then wish to cancel the order or wait until the item becomes available.
-<br/>
+### 6. 免責事項
 
-#### Out of Stock Orders
+当グループは、本サイトに掲載する情報の正確性・完全性について可能な限り努力いたしますが、その保証をするものではありません。本サイトの利用により生じたいかなる損害についても、当グループは一切の責任を負いません。
 
-There are times when items become temporarily out of stock. If you order an 'Out Of Stock' product, we will send out the order to you as soon as the product becomes available again. If we cannot source the item we will contact you to inform you. Your credit card will not be debited until we dispatch the product.
+### 7. 規約の変更
 
-There are times when items become temporarily out of stock. If you order an 'Out Of Stock' product, we will send out the order to you as soon as the product becomes available again. If we cannot source the item we will contact you to inform you. Your credit card will not be debited until we dispatch the product.
-<br/>
+当グループは、必要に応じて本規約の内容を変更することがあります。変更後の利用規約は、本サイトに掲載した時点で効力を生じるものとします。
 
-#### Accuracy of Information
+### 8. 準拠法
 
-We put a lot of time and effort into describing and photographing the products we sell using manufacturer's websites, catalogues, our own photography studio and often our own descriptions of the products. Although we aim to ensure that every picture and description is 100% accurate, mistakes do occur so let us know if you see or read something that isn’t correct. If you have purchased something based on a picture or description on the website which turns out to be incorrect we will be happy to replace or refund the product (unused).
-<br/>
+本規約の解釈および適用は、日本国法に準拠するものとします。
 
-#### Changes
+### 9. お問い合わせ
 
-If we decide to change our Terms and Conditions, we will post those changes on this page so that you are always aware of what information we collect, how we use it and under what circumstances we disclose it.
-<br/>
-
-#### Site Usage
-
-Onlinelightshop disclaims damages of any kind, compensatory, direct, indirect or consequential damages, loss of data, income or profit, loss of or damage to property and claims of third parties implied or otherwise relating to use of this site.
-<br/>
-
-#### Credit Card Security
-
-We take online security extremely seriously and have taken several steps to ensure that your payment information is processed confidentially and accurately. We use Sagepay, a world leader in secure online payments.
-
-Onlinelightshop offer the use of secure servers where information is protected by Secure Sockets Layer (SSL), the industry standard encryption technology. SSL works with Netscape Navigator, Microsoft Internet Explorer, AOL and other browsers. This encryption makes it virtually impossible for unauthorised parties to read any information that you send us.
-<br/>
-
-#### Price and Payment
-
-- The Price of the Goods shall be that stipulated on the Seller’s Website. The Price is NOT INCLUSIVE of VAT. The Price EXCLUDES delivery charges.
-- The total purchase price, including VAT and delivery charges, if any, will be displayed in the Buyer’s shopping cart prior to confirming the order.
-- Payment of the Price plus VAT and delivery charges must be made in full before dispatch of the Goods.
-- Payment must be made by secure credit or debit transactions (please see Privacy Statement).
-  <br/>
-
-#### Warranty
-
-- The Seller warrants that the Goods will at the time of dispatch correspond to the description given by the Seller.
-- After 7 Working days from the date of delivery goods will be repaired or replaced dependant upon the nature of the fault.
-  <br/>
-
-#### Delivery
-
-- Goods supplied within the UK will normally be delivered within 3-5 working days of acceptance of order.
-- Where a specific delivery date has been agreed, and where this delivery date cannot be met, the Buyer will be notified and given the opportunity to agree a new delivery date or cancel the order.
-- Title and risk in the Goods shall pass to the Buyer upon delivery of the Goods.
-  <br/>
-
-#### Cancellation and Return
-
-The Buyer shall inspect the Goods immediately upon receipt and shall notify the Seller via the designated Returns Submission Form within 7 working days of delivery if the Goods are damaged or do not comply with any of the Contract. If the Buyer fails to do so the Buyer shall be deemed to have accepted the Goods.
-
-Where a claim of defect or damage is made the Seller shall be responsible for the recovery of the Goods from the Buyer. The Buyer shall be entitled to a full refund (including delivery costs) if the Goods are in fact defective.
-
-The Seller reserves the right to refuse a refund if:
-
-The Goods have been used.
+本規約に関するお問い合わせは、当グループのSNSアカウントよりご連絡ください。
