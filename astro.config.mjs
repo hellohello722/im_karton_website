@@ -16,7 +16,7 @@ export default defineConfig({
   trailingSlash: config.site.trailing_slash ? "always" : "never",
   output: "server",
   adapter: cloudflare({
-    imageService: "compile",
+    imageService: "passthrough",
   }),
   vite: { plugins: [tailwindcss()] },
   integrations: [
