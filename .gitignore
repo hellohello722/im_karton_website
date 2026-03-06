@@ -27,3 +27,7 @@ package-lock.json
 
 .netlify
 .vercel
+.wrangler
+
+# claude worktrees
+.claude/worktrees/
