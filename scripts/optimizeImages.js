@@ -7,17 +7,43 @@
  * - PNG を圧縮
  * - 元ファイルを上書き（ビルド環境上のみ。git の元ファイルは変更されない）
  *
+ * sharp が読み込めない場合（ネイティブバイナリ不足など）は
+ * 現在のプラットフォーム向けに自動インストールを試み、
+ * それでも失敗した場合はスキップしてビルドを続行する。
+ *
  * 使い方:
  *   node scripts/optimizeImages.js          # public/images/ を処理
  *   node scripts/optimizeImages.js --dry-run # 実際には書き込まず、処理内容だけ表示
  */
 
-import sharp from "sharp";
 import fs from "node:fs";
 import path from "node:path";
+import { execSync } from "node:child_process";
 
 const IMAGES_DIR = path.resolve("public/images");
 const DRY_RUN = process.argv.includes("--dry-run");
+
+/**
+ * sharp を読み込む。失敗したらプラットフォーム向けに再インストールを試みる。
+ */
+async function loadSharp() {
+  try {
+    const mod = await import("sharp");
+    return mod.default;
+  } catch {
+    console.log("  sharp load failed. Attempting platform-specific install...");
+    try {
+      execSync("npm install --no-save sharp", {
+        stdio: "inherit",
+        timeout: 120_000,
+      });
+      const mod = await import("sharp");
+      return mod.default;
+    } catch (e) {
+      return null;
+    }
+  }
+}
 
 // 画像カテゴリ別の最適化ルール
 const RULES = [
@@ -87,7 +113,7 @@ function formatSize(bytes) {
 /**
  * 1つの画像を最適化
  */
-async function optimizeImage(filePath) {
+async function optimizeImage(sharp, filePath) {
   const fileName = path.basename(filePath);
   const ext = path.extname(filePath).toLowerCase();
   const originalSize = fs.statSync(filePath).size;
@@ -175,6 +201,15 @@ async function main() {
     `\n  Image Optimization ${DRY_RUN ? "(dry-run)" : ""}\n  ${"=".repeat(40)}`,
   );
 
+  // sharp の読み込み（失敗時は自動インストール → スキップ）
+  const sharp = await loadSharp();
+  if (!sharp) {
+    console.log(
+      "  ⚠ sharp is not available. Skipping image optimization.\n",
+    );
+    return;
+  }
+
   const files = getImageFiles(IMAGES_DIR);
   console.log(`  Found ${files.length} images in public/images/\n`);
 
@@ -184,7 +219,7 @@ async function main() {
 
   for (const file of files) {
     try {
-      const result = await optimizeImage(file);
+      const result = await optimizeImage(sharp, file);
       if (result) {
         optimizedCount++;
         totalOriginal += result.originalSize;
