@@ -22,3 +22,12 @@
 ### 4. @astrojs/node の未使用パッケージ
 - package.json に `@astrojs/node` が残っているが使われていない
 - クリーンアップ推奨
+
+### 5. 画像最適化の再導入
+- 現在 `imageService: "passthrough"` で画像最適化なし
+- Cloudflareビルド環境でsharpが使えないため一時的にパススルーにした
+- 画像が最適化されないためページ表示速度やデータ量に影響あり
+- 対策候補:
+  - Cloudflare Image Resizing（有料プラン）を使う
+  - ビルド前にローカルで画像を事前最適化（WebP変換・リサイズ）しておく
+  - `output: "static"` に変更してビルドマシンにsharpをインストールする方法を検討
