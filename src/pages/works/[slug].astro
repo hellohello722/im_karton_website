@@ -1,15 +1,17 @@
 ---
 import Base from "@/layouts/Base.astro";
 import PageHeader from "@/partials/PageHeader.astro";
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
-const { slug } = Astro.params;
-const caseStudy = await getEntry("caseStudies", slug ?? "");
-
-if (!caseStudy) {
-  return Astro.redirect("/404");
+export async function getStaticPaths() {
+  const caseStudies = await getCollection("caseStudies");
+  return caseStudies.map((study) => ({
+    params: { slug: study.id },
+    props: { caseStudy: study },
+  }));
 }
 
+const { caseStudy } = Astro.props;
 const { data, body } = caseStudy;
 ---
 

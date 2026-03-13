@@ -4,13 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**IM Karton** corporate website built on the **Storeplate** boilerplate. Uses Astro 5 with a hybrid server/static output mode deployed to Netlify.
+**IM Karton** corporate website built on the **Storeplate** boilerplate. Astro 5 static site deployed to **Cloudflare Pages**.
 
 ## Commands
 
 ```bash
 yarn dev          # Start dev server (also runs theme generator in watch mode)
-yarn build        # Generate theme + build for production
+yarn build        # Generate theme + optimize images + build for production
 yarn preview      # Preview production build locally
 yarn format       # Format code with Prettier
 yarn check        # TypeScript check via astro check
@@ -27,6 +27,21 @@ Package manager is **yarn** (not npm). Node v22.20+ required.
 - **Tailwind CSS 4** – styling via `@tailwindcss/vite`
 - **TypeScript** – strict mode enabled
 
+### Output Mode
+
+- `output: "static"` – all pages are pre-built as static HTML at build time
+- No server adapter needed (no Cloudflare Workers)
+- Dynamic routes (`[slug].astro`) use `getStaticPaths()`
+
+### Build Pipeline
+
+```
+themeGenerator.js → optimizeImages.js → astro build
+```
+
+- `scripts/themeGenerator.js` – reads `theme.json` and generates CSS variables
+- `scripts/optimizeImages.js` – auto-resizes/compresses images in `public/images/` at build time (sharp). If sharp is unavailable on the build machine, it auto-installs or gracefully skips.
+
 ### Path Aliases (tsconfig.json)
 
 ```
@@ -42,6 +57,8 @@ Package manager is **yarn** (not npm). Node v22.20+ required.
 
 Content lives in `src/content/` as Markdown/MDX files with Zod-validated schemas defined in `src/content.config.ts`. Collections: `pages`, `caseStudies`, `team`, `news`, `about`, `contact`, `ctaSection`, `paymentSection`.
 
+Note: `news`, `caseStudies`, `about`, `contact`, `team` collections are currently empty.
+
 Access content with `getCollection()` or `getEntry()` from `astro:content`.
 
 ### Configuration
@@ -51,8 +68,6 @@ Site-wide settings are JSON files in `src/config/`:
 - `theme.json` – color palette (light/dark) and fonts
 - `menu.json` – navigation structure
 - `social.json` – social media links
-
-`scripts/themeGenerator.js` reads `theme.json` and generates CSS variables. This runs automatically during `yarn dev` and `yarn build`.
 
 ### Component Types
 
@@ -69,10 +84,19 @@ Site-wide settings are JSON files in `src/config/`:
 ### Routing
 
 - `src/pages/` – file-based routes
-- `src/pages/[slug].astro` patterns – dynamic routes for news/works
-- `src/pages/[regular].astro` – catch-all fallback
+- `src/pages/news/[slug].astro` – news detail pages (uses `getStaticPaths`)
+- `src/pages/works/[slug].astro` – case study detail pages (uses `getStaticPaths`)
+- `src/pages/[regular].astro` – catch-all for content collection pages
 
 ### Deployment
 
-- **Netlify**: `netlify.toml` configures build command (`yarn build`), publish dir (`dist`), Node 22.21.1, edge middleware
+- **Cloudflare Pages**: `wrangler.toml` configures build output dir (`dist`)
+- **Cloudflare Access**: Preview site is restricted via Zero Trust access policy
 - **Docker**: Multi-stage build (deps → builder → Nginx) for self-hosted deployment
+
+## User Preferences
+
+- Communicate in Japanese
+- Do not read files outside the project directory
+- Do not commit on behalf of the user – user commits manually
+- Do not expand scope beyond what was explicitly requested
