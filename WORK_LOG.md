@@ -7,7 +7,7 @@
 - **サイト**: Im Karton コーポレートサイト
 - **技術**: Astro 5 + React 18 + Tailwind CSS 4（Storeplate ボイラープレート）
 - **パッケージマネージャ**: yarn（Classic 1.22.22 / Volta管理）
-- **デプロイ先**: Netlify
+- **デプロイ先**: Cloudflare Pages
 
 ## Im Karton について
 
@@ -137,8 +137,7 @@ SNS:
 
 ### 2. 画像差し替え
 以下をまとめて対応:
-- **ヒーロースライダー背景画像**: 現在3枚とも `/images/IMG_6265.jpeg`（モナコ港の写真）
-  - config.json の `hero_slides[].image.src` を変更
+- **ヒーロースライダー背景画像**: 各スライド専用画像に設定済み（hero_slider_SPIEL_Essen.jpg / hero_slider_FIJ.jpg / hero_slider_note.jpg）
 - **favicon**: `/images/favicon.png`（テンプレート画像の可能性）
   - config.json の `site.favicon` を変更
 - **og-image**: `/images/og-image.png`（テンプレート画像の可能性）
@@ -148,7 +147,7 @@ SNS:
 
 ### 3. base_url の変更
 - `src/config/config.json` の `site.base_url` を実際のドメインに変更
-- 現在値: `https://www.im-karton.jp/`
+- 現在値: `https://www.imkarton.net/`
 
 ### 4. GTM（Google Tag Manager）設定
 - `src/config/config.json` の `google_tag_manager`
@@ -162,7 +161,7 @@ SNS:
 ### 6. プロダクションデプロイ/検証
 - 上記すべて完了後に実施
 - `yarn build` でビルド確認
-- Netlify へデプロイ
+- Cloudflare Pages へデプロイ
 
 ---
 
@@ -192,7 +191,6 @@ SNS:
 
 - パッケージマネージャは **yarn Classic (1.22.22)** を使用。npm や Yarn Berry (4.x) は不可
 - Volta で Node.js / yarn のバージョン管理
-- worktree (`.claude/worktrees/eager-diffie/`) と main project (`C:\Users\hello\Desktop\im_karton_website\`) は別物。編集は main project 側に行うこと
 - HeroSlider は React コンポーネント（Swiper.js）で `client:load` hydration
 - コンテンツの非表示は `draft: true` で制御（ファイル削除ではない）
 - DynamicIcon は react-icons/fa6 を使用（例: FaXTwitter, FaInstagram）
